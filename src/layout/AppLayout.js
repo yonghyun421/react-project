@@ -1,7 +1,7 @@
 import React from "react";
 
-const AppLayout = () => {
+function AppLayout() {
   return <div>AppLayout</div>;
-};
+}
 
 export default AppLayout;
