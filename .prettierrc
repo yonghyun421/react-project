@@ -1,11 +1,11 @@
 {
-  "printWidth": 80, // 한줄 최대길이(줄바꿈 기준)
-  "trailingComma": "all", // object의 마지막 요소 ',' 여부
-  "tabWidth": 2, // 탭간격
-  "semi": true,  // 마지막에 ';' 여부
-  "singleQuote": true,  // '' or ""
-  "bracketSpacing": true,  // 객체 리터럴 사용시 양끝 여백 여부(편안) { foo: 'bar' }
-  "bracketSameLine": true,  // 태그 <> 의 끝이 다음줄로 넘어가는지 여부
-  "arrowParens": "avoid",  // arrow function 사용시 () 생략할지 여부
-  "useTabs": false // 탭 사용 여부
+  "printWidth": 80,
+  "trailingComma": "all", 
+  "tabWidth": 2, 
+  "semi": true,  
+  "singleQuote": true,  
+  "bracketSpacing": true,  
+  "bracketSameLine": true,  
+  "arrowParens": "avoid",  
+  "useTabs": false 
 }
