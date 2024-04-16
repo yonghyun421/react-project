@@ -10,20 +10,42 @@ function YoutubeVideo() {
     keyword,
   });
 
-  console.log("data: ", data);
-
   useEffect(() => {
-    setQuery("");
+    // 테스트용 검색키워드 설정
+    const newQuery = new URLSearchParams();
+    newQuery.set("q", "프론트엔드");
+    setQuery(newQuery, { replace: true });
   }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (isError) {
+  if (isError || !data || !data.items) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
 
-  return <div>YoutubeVideo</div>;
+  return (
+    <div>
+      {data.items.map(item => {
+        if (item.id.kind === "youtube#video") {
+          return (
+            <div key={item.id.videoId}>
+              <iframe
+                title={item.id.videoId}
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${item.id.videoId}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          );
+        }
+        return null;
+      })}
+    </div>
+  );
 }
 
 export default YoutubeVideo;
