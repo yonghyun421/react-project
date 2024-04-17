@@ -1,0 +1,23 @@
+.slider-container {
+  margin-top: 20px;
+}
+
+.carousel-container {
+  overflow-x: hidden;
+  overflow-y: visible;
+  height: 400px;
+}
+.sliderClass {
+  height: 90%;
+}
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 290px;
+    display: flex;
+    overflow-y: hidden;
+    justify-content: space-between;
+  }
+  .sliderClass {
+    height: 100%;
+  }
+}

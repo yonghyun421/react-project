@@ -3,14 +3,16 @@ import api from "../utils/api";
 
 const API_KEY = process.env.REACT_APP_KEY;
 
-const fetchNewsList = async () => {
+const fetchLatestNews = async () => {
   const response = await api.get(`/top-headlines?country=kr&apiKey=${API_KEY}`);
   return response.data;
 };
 
+// sources=bbc-news
 // eslint-disable-next-line
-export const useNewsListQuery = () =>
-  useQuery({
-    queryKey: ["news-list"],
-    queryFn: fetchNewsList,
+export const useLatestNews = () => {
+  return useQuery({
+    queryKey: ["최신뉴스"],
+    queryFn: fetchLatestNews,
   });
+};
