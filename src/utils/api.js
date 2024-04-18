@@ -1,10 +1,4 @@
 import axios from "axios";
-// eslint-disable-next-line
-const API_KEY = process.env.REACT_APP_CLIENT_ID;
-// eslint-disable-next-line
-const SECRET_KEY = process.env.REACT_APP_CLIENT_SECRET;
-// eslint-disable-next-line
-const NEWS_API_KEY = process.env.REACT_APP_KEY;
 
 const api = axios.create({
   params: { query: "최신뉴스" },

@@ -1,12 +1,16 @@
 import React from "react";
 import "./NewsCard.style.css";
 import { useNavigate } from "react-router-dom";
-
-const NewsCard = ({ articles }) => {
+/* eslint-disable react/prop-types */
+function NewsCard({ articles }) {
   const navigate = useNavigate();
   const extractNumber = url => {
-    const numericPart = url.replace(/\D/g, "");
-    return Number.isNaN(Number(numericPart)) ? null : Number(numericPart);
+    const numericPart = url.match(/\d+/g);
+    if (numericPart) {
+      const numericString = numericPart.join("");
+      return Number(numericString.substr(0, 15));
+    }
+    return null;
   };
 
   const newsDetailPage = () => {
@@ -30,7 +34,7 @@ const NewsCard = ({ articles }) => {
         style={{ backgroundImage: `url(${articles.urlToImage})` }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >
-        <div className="overlay p-2"></div>
+        <div className="overlay p-2" />
       </div>
       <div className="article-contents">
         <div>{articles.title}</div>
@@ -38,6 +42,6 @@ const NewsCard = ({ articles }) => {
       </div>
     </div>
   );
-};
+}
 
 export default NewsCard;
