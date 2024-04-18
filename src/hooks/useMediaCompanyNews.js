@@ -3,10 +3,10 @@ import api from "../utils/api";
 
 const API_KEY = process.env.REACT_APP_KEY;
 
-const fetchCompanyNews = async queryData => {
+const fetchCompanyNews = async (queryData) => {
   const company = queryData.queryKey[1];
   const response = await api.get(
-    `/top-headlines?sources=${company}&apiKey=${API_KEY}`,
+    `/top-headlines?sources=${company}&apiKey=${API_KEY}`
   );
   return response.data;
 };
