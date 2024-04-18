@@ -1,20 +1,20 @@
-import React, { useState } from "react"
-import "./Header.css"
-import Button from "react-bootstrap/Button"
-import Form from "react-bootstrap/Form"
-import Nav from "react-bootstrap/Nav"
-import Navbar from "react-bootstrap/Navbar"
-import { Link, useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import "./Header.css";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-  const [keyword, setKeyword] = useState("")
-  const navigate = useNavigate()
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
 
-  const searchByKeyword = event => {
-    event.preventDefault()
-    navigate(`/news?q=${keyword}`)
-    setKeyword("")
-  }
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    navigate(`/news?q=${keyword}`);
+    setKeyword("");
+  };
   return (
     <div className="header">
       <Navbar className="navbar" collapseOnSelect expand="lg" variant="dark">
@@ -42,7 +42,7 @@ function Header() {
               className="me-2"
               aria-label="Search"
               value={keyword}
-              onChange={event => setKeyword(event.target.value)}
+              onChange={(event) => setKeyword(event.target.value)}
             />
             <Button variant="outline-danger" type="submit">
               SEARCH
@@ -51,7 +51,7 @@ function Header() {
         </Navbar.Collapse>
       </Navbar>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

@@ -21,7 +21,7 @@ const NewsPage = () => {
   return (
     <div>
       <ul className="news-list-box">
-        {newsList?.map(news => (
+        {newsList?.map((news) => (
           <li key={news?.url}>
             <NewsCard articles={news} />
           </li>
