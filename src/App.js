@@ -13,10 +13,11 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Homepage />} />
-        </Route>
-        <Route path="news">
-          <Route index element={<NewsPage />} />
-          <Route path=":id" element={<NewsDetail />} />
+          <Route path="category/:categoryName" element={<CategoryPage />} />
+          <Route path="news">
+            <Route index element={<NewsPage />} />
+            <Route path=":id" element={<NewsDetail />} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

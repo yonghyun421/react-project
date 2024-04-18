@@ -1,0 +1,45 @@
+.newsDetail--wrap * {
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+
+.newsDetail--wrap img {
+  width: 100%;
+}
+
+.newsDetail--wrap {
+  width: 100%;
+  padding: 3rem 16px;
+}
+
+.newsDetail--title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  word-break: keep-all;
+  margin-bottom: 0.5rem;
+}
+
+.newsDetail--date {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.newsDetail--img {
+  padding: 2rem 0 1rem;
+}
+
+.newsDetail--con {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+
+.newsDetail--author {
+  font-size: 0.8rem;
+}
+
+.newsDetail--news {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+@media (max-width:767px) {}
