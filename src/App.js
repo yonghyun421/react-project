@@ -19,6 +19,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="news">
             <Route index element={<NewsPage />} />
+            <Route path="category/:category" element={<NewsPage />} />
             <Route path=":id" element={<NewsDetail />} />
           </Route>
           <Route path="mypage">
