@@ -5,7 +5,7 @@ import Header from "../common/Header/Header";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="wrap">
       <Header />
       <Outlet />
       <Footer />
