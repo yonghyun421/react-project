@@ -1,0 +1,18 @@
+.top-navbar {
+  margin-bottom: 30px;
+}
+.navbar-container {
+  width: 150%;
+  height: 4vh;
+  background-color: #fff;
+}
+
+
+.categories-list:hover {
+  transition: 0.2s;
+  color: #000;
+  border-bottom: 2px solid rgb(105, 105, 253);
+  border-radius: 2px;
+  padding: 5px;
+}
+
