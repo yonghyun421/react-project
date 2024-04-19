@@ -20,7 +20,7 @@ function NewsCard({ articles }) {
 
   return (
     <div
-      className="news--card"
+      className="newscard-area"
       onClick={newsDetailPage}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {
@@ -30,7 +30,7 @@ function NewsCard({ articles }) {
       role="button"
       tabIndex={0}>
       <div
-        className="movie-card"
+        className="news-card"
         style={{ backgroundImage: `url(${articles.urlToImage})` }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >

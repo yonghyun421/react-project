@@ -10,16 +10,19 @@ import YoutubeBox from "./components/YoutubeBox/YoutubeBox";
 function Homepage() {
   return (
     // <div>
-    <Container className="Homepage-area" fluid>
-      <Row>
-        <Col xs={3} className="country-area">
+    <Container className="Homepage-area">
+      <Row className="justify-content-md-center">
+        <Col xs={4} className="country-area">
+          {/* aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilinitjpkrltlvmamxmyngnlnonzphplptrorsrusasesgsiskthtrtwuausveza */}
           <div className="area-title">나라별 최신뉴스</div>
+          <MediaCompanySlide country="cn" />
           <MediaCompanySlide country="us" />
+          <MediaCompanySlide country="tr" />
           <MediaCompanySlide country="cu" />
           <MediaCompanySlide country="jp" />
           <MediaCompanySlide country="eg" />
         </Col>
-        <Col xs={5} className="slide-area">
+        <Col xs={4} className="slide-area">
           <div className="area-title">분야별 최신뉴스</div>
           <LatestNewsSlide />
           <CategoryNewsSlide category="sports" />
@@ -28,7 +31,7 @@ function Homepage() {
           <CategoryNewsSlide category="general" />
           <CategoryNewsSlide category="science" />
         </Col>
-        <Col xs={3}>
+        <Col xs={3} className="weather-area">
           <WeatherBox />
           <YoutubeBox />
         </Col>

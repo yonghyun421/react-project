@@ -1,7 +1,15 @@
 .slider-container {
+  height: 350px;
   margin-top: 20px;
-}
 
+  .slide {
+    height: 100%;
+
+    a {
+      top: -150px;
+    }
+  }
+}
 .carousel-container {
   overflow-x: hidden;
   overflow-y: visible;
@@ -10,6 +18,17 @@
 .sliderClass {
   height: 90%;
 }
+
+.carousel-control-next-icon {
+  background-color: black;
+  color: black;
+}
+
+.carousel-control-prev-icon {
+  background-color: black;
+  color: black;
+}
+
 @media (max-width: 480px) {
   .carousel-container {
     height: 290px;
