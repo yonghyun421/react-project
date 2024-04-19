@@ -29,7 +29,7 @@ const CategoryPage = () => {
         const response = await axios.get(
           `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}&pageSize=5&page=${page}`,
         );
-        setArticles(prev => [...prev, ...response.data.articles]); 
+        setArticles(prev => [...prev, ...response.data.articles]);
         setHasMore(response.data.articles.length > 0);
         setLoading(false);
       } catch (error) {
@@ -39,10 +39,10 @@ const CategoryPage = () => {
     };
 
     fetchArticles();
-  }, [category, page]);  
+  }, [category, page]);
 
   const handleLoadMore = () => {
-    setPage(prevPage => prevPage + 1);  
+    setPage(prevPage => prevPage + 1);
   };
 
   return (
@@ -53,6 +53,10 @@ const CategoryPage = () => {
           <li key={index} className="article">
             <img src={article.urlToImage} alt={article.title} />
             <div className="article-content">
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"></a>
               <h3>{article.title}</h3>
               <p>{article.description}</p>
             </div>
@@ -60,7 +64,9 @@ const CategoryPage = () => {
         ))}
       </ul>
       {hasMore && !loading && (
-        <button onClick={handleLoadMore} className="plus-button">기사 더보기  <FaChevronDown /></button>
+        <button onClick={handleLoadMore} className="plus-button">
+          기사 더보기 <FaChevronDown />
+        </button>
       )}
       {loading && <p>로딩 중...</p>}
     </div>
