@@ -11,6 +11,7 @@ function NewsDetailPage() {
     ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")} ${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`
     : "";
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     window.scrollTo(0, 0); // 페이지 진입 시 스크롤 위치를 최상단으로 이동
   }, []);
   /* eslint-disable react/no-danger */
