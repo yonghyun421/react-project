@@ -1,5 +1,18 @@
-.category-list {
-  display: flex;
-  justify-content: center; /* 가운데 정렬 */
+.top-navbar {
+  margin-bottom: 30px;
+}
+
+
+.categories-list { 
+ margin-right: 120px;
+ color: #000;
+ 
+}
+.categories-list:hover {
+  transition: 0.5s;
+  font-weight: bold;
+  background-color: rgb(253, 255, 122);
+  border-radius: 30px;
+  scale: 1.05;
 }
 

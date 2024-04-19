@@ -1,27 +1,40 @@
-import React from "react";
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link, useNavigate } from "react-router-dom";
-import './Navbar.style.css'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Navbar.style.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-const categories = ['정치', '경제', '사회', '생활/문화', 'IT/과학', '세계', '랭킹'];
+  const categories = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology '];
+  const categoryNames = {
+  business: '경제',
+  entertainment: '엔터테인먼트',
+  general: '일반',
+  health: '건강',
+  science: '과학',
+  sports: '스포츠',
+  technology: '기술'
+};
 
-
-function CustomNavbar() {
+const NavigationBar = () => {
+  
   return (
-    <div>
-      <Navbar bg="light" variant="light" expand="lg">
-        <Container>
-          <Nav className="me-auto category-list">
-            {categories.map((category, idx) => (
-              <Nav.Link key={idx} as={Link} to={`/category/${category.replace('/', '')}`}>
-              {category}
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="top-navbar">
+      <Container >
+        <Nav className="flex-row">
+          {categories.map((category, index) => (
+            <Nav.Item key={index} className='list-contain'>
+              <Nav.Link as={NavLink} to={`/category/${category}`} activeClassName="active" className='categories-list'>
+                {category}
               </Nav.Link>
-            ))}
-          </Nav>
-        </Container>
-      </Navbar>
-    </div>
+            </Nav.Item>
+          ))}
+        </Nav>
+      </Container>
+    </Navbar>
   );
-}
+};
 
-export default CustomNavbar;
+export default NavigationBar;
+
+
