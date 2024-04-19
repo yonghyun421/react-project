@@ -27,7 +27,7 @@ function NewsPage() {
     isFetchingNextPage,
   } = useNewsListQuery({ category });
 
-  const newsList = data?.pages.flatMap(page => page.articles);
+  const newsList = data && data.pages.flatMap(page => page.articles);
 
   if (isLoading) {
     return <div>Loading...</div>;

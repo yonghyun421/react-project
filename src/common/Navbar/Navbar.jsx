@@ -41,7 +41,7 @@ function NavigationBar() {
                 <Nav.Link
                   as={NavLink}
                   to={`/news/category/${category}`}
-                  activeClassName="active"
+                  activeclassname="active"
                   className="categories-list">
                   {categoryNames[category]}
                 </Nav.Link>
