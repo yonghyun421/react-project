@@ -27,7 +27,9 @@ function Header() {
       <div className="menu--btn">
         <MenuIcon />
       </div>
-      <div className="logo">NewsTab</div>
+      <div className="logo">
+        <Link to="/">NewsTab</Link>
+      </div>
       <div className="util--Btn">
         <div className="mypage--btn">
           <Link as={Link} to="/" className="text-white">
