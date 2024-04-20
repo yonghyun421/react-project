@@ -86,7 +86,10 @@ function LoginPage() {
         <button type="button" className="custom--button" onClick={handleLogin}>
           로그인
         </button>
-        <button type="button" className="link">
+        <button
+          type="button"
+          className="link"
+          onClick={() => navigate("/mypage/join")}>
           회원가입
         </button>
       </div>
