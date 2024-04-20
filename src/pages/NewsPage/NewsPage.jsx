@@ -6,6 +6,7 @@ import NewsCard from "../../common/NewsCard/NewsCard";
 import { useNewsListQuery } from "../../hooks/useNews";
 import { useSearchNewsQuery } from "../../hooks/useSearchNews";
 import "./NewsPage.style.css";
+import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
 
 const categoryNames = {
   business: "경제",
@@ -37,9 +38,7 @@ function NewsPage() {
   console.log(data);
   const newsList = data && data.pages.flatMap(page => page.articles);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <LoadingSpinner />;
 
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;

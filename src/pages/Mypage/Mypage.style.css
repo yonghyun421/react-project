@@ -1,9 +1,15 @@
 .myPage--wrap {
-  background: #f7f7f7;
-  padding: 30px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: #f7f7f7;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.myPage--wrap h2 {
+    display: none;
 }
 
 .myPage--wrap * {
@@ -15,6 +21,7 @@
 }
 
 .myPage--box {
+<<<<<<< HEAD
   max-width: 500px;
   width: calc(100% - 32px);
   padding: 16px;
@@ -27,11 +34,37 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
+=======
+    max-width: 500px;
+    width: calc(100% - 32px);
+    padding: 16px 16px 24px;
+    background-color: #fff;
+    border-radius: 14px;
+}
+
+.profile--wrap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile--info__id {
+    font-size: 1.1rem;
+    padding-bottom: 0.2rem;
+    font-weight: 700;
+>>>>>>> f415351a67808758634879be664e7a2ca804d490
 }
 
 .profile--info p,
 .profile--info ul {
   margin: 0;
+}
+
+.profile--like__title {
+    font-weight: 700;
 }
 
 .profile--info__bookmark {
@@ -42,6 +75,35 @@
   padding: 0;
 }
 
+.profile--info__bookmark li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.profile--info__bookmark li::before {
+    content: '';
+    background-image: url("../../assets/bookmark-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 17px;
+    display: inline-flex;
+    width: 14px;
+    height: 17px;
+}
+
+.profile--info__bookmark li a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #222;
+    display: flex;
+    gap: 0.3rem;
+}
+
+.profile--info__bookmark li a span {
+    font-weight: 700;
+}
+
 .profile--img {
   width: 90px;
   border-radius: 100%;
@@ -49,6 +111,7 @@
 }
 
 .profile--like__list {
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 1px;
@@ -56,3 +119,50 @@
   list-style: none;
   padding: 0;
 }
+=======
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.profile--like__list li {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.profile--like__list li label {
+    font-size: 0.9rem;
+}
+
+@media (max-width:375px) {
+    .profile--like__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+    }
+}
+
+.profile--btn {
+    width: 100%;
+    border: none;
+    background: #FFD600;
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 14px;
+    font-weight: 700;
+}
+
+.member_delete {
+    max-width: 500px;
+    width: calc(100% - 32px);
+    text-align: right;
+}
+
+.member_delete a {
+    color: #aaa;
+}
+>>>>>>> f415351a67808758634879be664e7a2ca804d490
