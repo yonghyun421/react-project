@@ -29,6 +29,8 @@
 .header .menu--btn {
   left: 16px;
   display: none;
+  background: none;
+  border: none;
 }
 
 .header .util--Btn {
