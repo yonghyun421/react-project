@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   id: "",
   password: "",
-  bookmarkList: null,
-  interestList: null,
+  bookmarkList: [],
+  interestList: [],
   authenticate: false,
 };
 
