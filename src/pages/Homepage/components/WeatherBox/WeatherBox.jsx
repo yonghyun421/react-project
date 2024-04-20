@@ -30,11 +30,13 @@ function WeatherBox() {
   return (
     <div>
       <div className={"container"}>
+        {weather && 
         <div className={"weather-box"}>
-          <div>{weather?.name}</div>
-          <h2>{weather?.main.temp}°C</h2>
-          <h3>{weather?.weather[0].description}</h3>
+          <div>{weather.name}</div>
+          <h2>{weather.main.temp}°C</h2>
+          <h3>{weather.weather[0].description}</h3>
         </div>
+        }
       </div>
     </div>
   );

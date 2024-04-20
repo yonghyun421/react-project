@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Alert } from "react-bootstrap";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useMediaCompanyNews } from "../../../../hooks/useMediaCompanyNews";
@@ -18,5 +19,9 @@ function MediaCompanySlide({ company }) {
     </div>
   );
 }
+
+MediaCompanySlide.propTypes = {
+  company: PropTypes.string.isRequired,
+};
 
 export default MediaCompanySlide;

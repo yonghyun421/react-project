@@ -1,14 +1,11 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
-
 import NewsCard from "../../common/NewsCard/NewsCard";
 import { useNewsListQuery } from "../../hooks/useNews";
-// eslint-disable-next-line
-const NewsPage = () => {
+
+function NewsPage() {
   const { data, isLoading, isError, error } = useNewsListQuery();
-  const newsList = data?.articles;
-  // eslint-disable-next-line
-  console.log(data);
+  const newsList = data ? data.articles : null;
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -21,13 +18,16 @@ const NewsPage = () => {
   return (
     <div>
       <ul className="news-list-box">
-        {newsList?.map(news => (
-          <li key={news?.url}>
-            <NewsCard articles={news} />
-          </li>
-        ))}
+        {newsList &&
+          newsList.map(news => (
+            <li key={news.id || news.url}>
+              {" "}
+              <NewsCard articles={news} />
+            </li>
+          ))}
       </ul>
     </div>
   );
-};
+}
+
 export default NewsPage;

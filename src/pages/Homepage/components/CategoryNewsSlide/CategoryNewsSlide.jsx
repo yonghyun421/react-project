@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Alert } from "react-bootstrap";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useCategoryNews } from "../../../../hooks/useCategoryNews";
@@ -18,5 +19,9 @@ function CategoryNewsSlide({ category }) {
     </div>
   );
 }
+
+CategoryNewsSlide.propTypes = {
+  category: PropTypes.string.isRequired,
+};
 
 export default CategoryNewsSlide;
