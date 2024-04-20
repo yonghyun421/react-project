@@ -4,6 +4,7 @@ const initialState = {
   id: "",
   password: "",
   bookmarkList: [],
+  interestList: [],
   authenticate: false,
 };
 
@@ -19,6 +20,8 @@ const authenticateSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.bookmarkList = action.payload.bookmarkList;
       // eslint-disable-next-line no-param-reassign
+      state.interestList = action.payload.interestList;
+      // eslint-disable-next-line no-param-reassign
       state.authenticate = true;
     },
     logout(state) {
@@ -28,6 +31,8 @@ const authenticateSlice = createSlice({
       state.password = "";
       // eslint-disable-next-line no-param-reassign
       state.bookmarkList = [];
+      // eslint-disable-next-line no-param-reassign
+      state.interestList = [];
       // eslint-disable-next-line no-param-reassign
       state.authenticate = false;
     },
