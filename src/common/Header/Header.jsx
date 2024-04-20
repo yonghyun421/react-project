@@ -14,6 +14,7 @@ function Header() {
 
   const searchByKeyword = event => {
     event.preventDefault();
+    console.log("키워드", keyword);
     navigate(`/news?q=${keyword}`);
     setKeyword("");
   };
@@ -28,11 +29,13 @@ function Header() {
         <MenuIcon />
       </div>
       <div className="logo">
-        <Link to="/">NewsTab</Link>
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          NewsTab
+        </Link>
       </div>
       <div className="util--Btn">
         <div className="mypage--btn">
-          <Link as={Link} to="/" className="text-white">
+          <Link as={Link} to="/mypage/login" className="text-white">
             로그인
           </Link>
           <Link as={Link} to="/movies" className="text-white">
@@ -54,7 +57,9 @@ function Header() {
             <SearchIcon />
           </div>
           <Form
-            className={`d-flex search--box ${isSearchBoxVisible ? "" : "hidden"}`}
+            className={`d-flex search--box ${
+              isSearchBoxVisible ? "" : "hidden"
+            }`}
             onSubmit={searchByKeyword}>
             <Form.Control
               type="search"
