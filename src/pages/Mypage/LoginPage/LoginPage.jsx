@@ -1,25 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  onSnapshot,
+} from "firebase/firestore";
+import authenticateAction from "../../../redux/acticon/authenticateAction";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
 import "./LoginPage.style.css";
 
 function LoginPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(false);
-
   const [errorMessages, setErrorMessages] = useState({
-    userIdInvalidText: "",
-    userPasswordInvalidText: "",
+    userId: { invalid: false, invalidText: "" },
+    userPassword: { invalid: false, invalidText: "" },
   });
 
   const handleLogin = async event => {
     event.preventDefault();
-    setLoginError(null);
-
+    if (!userId) {
+      setErrorMessages({
+        userId: {
+          invalid: true,
+          invalidText: "아이디를 입력해주세요.",
+        },
+        userPassword: {
+          invalid: false,
+          invalidText: "",
+        },
+      });
+      return;
+    }
+    if (!password) {
+      setErrorMessages({
+        userId: {
+          invalid: false,
+          invalidText: "",
+        },
+        userPassword: {
+          invalid: true,
+          invalidText: "비밀번호를 입력해주세요.",
+        },
+      });
+      return;
+    }
     if (userId) {
       const userIdQuery = query(
         collection(db, "USER"),
@@ -30,8 +62,8 @@ function LoginPage() {
       if (userIdquerySnapshot.empty) {
         // 아이디 없음
         setErrorMessages({
-          userIdInvalidText: "존재하지 않는 아이디입니다.",
-          userPasswordInvalidText: "",
+          userId: { invalid: true, invalidText: "존재하지 않는 아이디입니다." },
+          userPassword: { invalid: false, invalidText: "" },
         });
       } else {
         // 아이디 있음
@@ -44,22 +76,21 @@ function LoginPage() {
 
         if (querySnapshot.empty) {
           // 비밀번호까지 일치하는 회원정보 없음
-          setLoginError(true);
           setErrorMessages({
-            userIdInvalidText: "",
-            userPasswordInvalidText: "비밀번호가 틀렸습니다.",
+            userId: { invalid: false, invalidText: "" },
+            userPassword: {
+              invalid: true,
+              invalidText: "비밀번호가 틀렸습니다.",
+            },
           });
         } else {
           // 비밀번호 일치함
-          setLoginError(false);
+          const userData = querySnapshot.docs[0].data();
+          const bookmarkList = userData.bookmark;
+          dispatch(authenticateAction.login(userId, password, bookmarkList));
           navigate("/");
         }
       }
-    } else {
-      setErrorMessages({
-        userIdInvalidText: "아이디를 입력해주세요.",
-        userPasswordInvalidText: "비밀번호를 입력해주세요.",
-      });
     }
   };
 
@@ -70,16 +101,16 @@ function LoginPage() {
         <Input
           placeholder="아이디"
           value={userId}
-          invalid={loginError}
-          invalidText={errorMessages.userIdInvalidText}
+          invalid={errorMessages.userId.invalid}
+          invalidText={errorMessages.userId.invalidText}
           onChange={event => setUserId(event.target.value)}
         />
         <Input
           type="password"
           value={password}
-          invalid={loginError}
+          invalid={errorMessages.userPassword.invalid}
           placeholder="비밀번호"
-          invalidText={errorMessages.userPasswordInvalidText}
+          invalidText={errorMessages.userPassword.invalidText}
           onChange={event => setPassword(event.target.value)}
         />
         <button type="button" className="custom--button" onClick={handleLogin}>

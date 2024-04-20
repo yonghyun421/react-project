@@ -8,10 +8,12 @@ function AppLayout() {
   const footerRef = useRef(null);
 
   useLayoutEffect(() => {
-    const headerHeight = headerRef.current?.offsetHeight || 0;
-    const footerHeight = footerRef.current?.offsetHeight || 0;
+    const headerHeight = (headerRef && headerRef.current.offsetHeight) || 0;
+    const footerHeight = (footerRef && footerRef.current.offsetHeight) || 0;
+    // eslint-disable-next-line
     const containerMinHeight = `${window.innerHeight - headerHeight - footerHeight}px`;
     console.log(headerHeight, footerHeight);
+    // eslint-disable-next-line
     document.querySelector(".contain").style.minHeight = containerMinHeight;
   }, []);
 

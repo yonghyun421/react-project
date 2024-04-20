@@ -13,11 +13,11 @@
 }
 
 .myPage--wrap * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .myPage--wrap img {
-    width: 100%;
+  width: 100%;
 }
 
 .myPage--box {
@@ -45,7 +45,7 @@
 
 .profile--info p,
 .profile--info ul {
-    margin: 0;
+  margin: 0;
 }
 
 .profile--like__title {
@@ -53,11 +53,11 @@
 }
 
 .profile--info__bookmark {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
 }
 
 .profile--info__bookmark li {
@@ -90,9 +90,9 @@
 }
 
 .profile--img {
-    width: 90px;
-    border-radius: 100%;
-    overflow: hidden;
+  width: 90px;
+  border-radius: 100%;
+  overflow: hidden;
 }
 
 .profile--like__list {
