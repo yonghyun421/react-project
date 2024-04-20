@@ -1,8 +1,8 @@
 import { authenticateActions } from "../reducer/authenticateSlice";
 
-function login(id, password) {
+function login(id, password, bookmarkList) {
   return dispatch => {
-    dispatch(authenticateActions.login({ id, password }));
+    dispatch(authenticateActions.login({ id, password, bookmarkList }));
   };
 }
 

@@ -1,9 +1,15 @@
 import React from "react";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { db } from "../../firebase-config";
 import "./Mypage.style.css";
 import noImage from "../../assets/noImage.jpg";
 
 function Mypage() {
+  const userId = useSelector(state => state.auth.id);
+  const bookmarkList = useSelector(state => state.auth.bookmarkList);
+
   return (
     <div className="inner myPage--wrap">
       <h2>마이페이지</h2>
@@ -13,7 +19,7 @@ function Mypage() {
             <img src={noImage} alt="noImage" />
           </div>
           <div className="profile--info">
-            <p className="profile--info__id">react20242</p>
+            <p className="profile--info__id">{userId}</p>
             <ul className="profile--info__bookmark">
               <li>
                 <Link to="/mypage/bookmark">
