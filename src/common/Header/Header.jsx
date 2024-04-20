@@ -39,10 +39,6 @@ const Header = forwardRef((props, ref) => {
     }
   };
 
-  useEffect(() => {
-    console.log("authenticate", authenticate);
-  });
-
   return (
     <>
       <div className="header" ref={ref}>
@@ -55,9 +51,12 @@ const Header = forwardRef((props, ref) => {
           <MenuIcon />
         </button>
         <div className="logo">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            style={{ textDecoration: "none", color: "white" }}>
             NewsTab
-          </Link>
+          </button>
         </div>
         <div className="util--Btn">
           <div className="mypage--btn">
@@ -67,9 +66,12 @@ const Header = forwardRef((props, ref) => {
               onClick={() => loginout()}>
               {authenticate ? "로그아웃" : "로그인"}
             </button>
-            <Link as={Link} to="/mypage" className="text-white">
+            <button
+              type="button"
+              className="text-white"
+              onClick={() => navigate("/mypage")}>
               마이페이지
-            </Link>
+            </button>
           </div>
           <div className="search--btn">
             <div

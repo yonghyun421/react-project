@@ -1,6 +1,6 @@
 import React from "react";
 // import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { db } from "../../firebase-config";
 import "./Mypage.style.css";
@@ -8,6 +8,7 @@ import noImage from "../../assets/noImage.jpg";
 import NEWS_CATEGORY from "../../constants/NEWS_CATEGORY";
 
 function Mypage() {
+  const navigate = useNavigate();
   const userId = useSelector(state => state.auth.id);
   const bookmarkList = useSelector(state => state.auth.bookmarkList);
   const interestList = useSelector(state => state.auth.interestList);
@@ -24,10 +25,10 @@ function Mypage() {
             <p className="profile--info__id">{userId}</p>
             <ul className="profile--info__bookmark">
               <li>
-                <Link to="/bookmark">
+                <button type="button" onClick={() => navigate("/bookmark")}>
                   북마크한 뉴스
                   <span>{bookmarkList ? bookmarkList.length : 0}</span>
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -63,7 +64,9 @@ function Mypage() {
         </div>
       </div>
       <p className="member_delete">
-        <Link to="/">회원탈퇴</Link>
+        <button type="button" onClick={() => navigate("/")}>
+          회원탈퇴
+        </button>
       </p>
     </div>
   );
