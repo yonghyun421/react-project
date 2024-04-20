@@ -1,6 +1,5 @@
 import React, { useEffect, useState, forwardRef } from "react";
 import "./Header.css";
-
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu-icon.svg";
 import authenticateAction from "../../redux/acticon/authenticateAction";
+import NavigationBar from "../Navbar/Navbar";
 
 const Header = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const Header = forwardRef((props, ref) => {
   const [keyword, setKeyword] = useState("");
   const [isSearchBoxVisible, setIsSearchBoxVisible] = useState(false);
   const navigate = useNavigate();
+  const [isMenuIconVisible, setIsMenuIconVisible] = useState(false);
 
   const searchByKeyword = event => {
     event.preventDefault();
@@ -25,6 +26,9 @@ const Header = forwardRef((props, ref) => {
 
   const handleSearchIconClick = () => {
     setIsSearchBoxVisible(true);
+  };
+  const handleMenuIconClick = () => {
+    setIsMenuIconVisible(!isMenuIconVisible);
   };
 
   const loginout = () => {
@@ -41,9 +45,14 @@ const Header = forwardRef((props, ref) => {
 
   return (
     <div className="header" ref={ref}>
-      <div className="menu--btn">
+      <button
+        type="button"
+        tabIndex={0}
+        onClick={handleMenuIconClick}
+        className="menu--icon menu--btn"
+        aria-label="menuIcon">
         <MenuIcon />
-      </div>
+      </button>
       <div className="logo">
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           NewsTab
@@ -94,6 +103,7 @@ const Header = forwardRef((props, ref) => {
           </Form>
         </div>
       </div>
+      <NavigationBar isMenuIconVisible={isMenuIconVisible} />
     </div>
   );
 });
