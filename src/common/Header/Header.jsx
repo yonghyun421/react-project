@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import "./Header.css";
 
 import Button from "react-bootstrap/Button";
@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu-icon.svg";
 
-function Header() {
+const Header = forwardRef((props, ref) => {
   const [keyword, setKeyword] = useState("");
   const [isSearchBoxVisible, setIsSearchBoxVisible] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Header() {
   };
 
   return (
-    <div className="header">
+    <div className="header" ref={ref}>
       <div className="menu--btn">
         <MenuIcon />
       </div>
@@ -77,6 +77,6 @@ function Header() {
       </div>
     </div>
   );
-}
+});
 
 export default Header;
