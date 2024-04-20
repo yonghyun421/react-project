@@ -28,22 +28,18 @@
 
 .header .menu--btn {
   left: 16px;
-  display: none;
 }
 
 .header .util--Btn {
   right: 16px;
   display: flex;
   align-items: center;
-  -webkit-box-align: center;
-  justify-content: center;
   gap: 1rem;
 }
 
 .mypage--btn {
   display: flex;
   align-items: center;
-  -webkit-box-align: center;
   gap: 1rem;
 }
 
@@ -101,4 +97,8 @@
   .mypage--btn {
     display: none;
   }
+}
+
+.menu--btn {
+  cursor: pointer;
 }
