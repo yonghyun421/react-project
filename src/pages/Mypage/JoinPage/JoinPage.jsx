@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
+
+import "../LoginPage/LoginPage.style.css";
 
 function JoinPage() {
   const [userId, setUserId] = useState("");
@@ -12,9 +15,17 @@ function JoinPage() {
 
   const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,}$/;
 
-  const handleUserIdChange = event => {
-    setUserId(event.target.value);
-    // 아이디 유효성 검사 로직 추가 필요
+  const handleUserIdChange = async event => {
+    const newUserId = event.target.value;
+    setUserId(newUserId);
+
+    // Firestore에서 userId 검증
+    const userQuery = query(
+      collection(db, "USER"),
+      where("userId", "==", newUserId),
+    );
+    const querySnapshot = await getDocs(userQuery);
+    setUserIdIsValid(querySnapshot.empty); // 결과가 비어있다면, 유효한 ID
   };
 
   const handlePasswordChange = event => {
@@ -29,9 +40,30 @@ function JoinPage() {
     setPasswordsMatch(value === password);
   };
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    // 입력 유효성 검사
+    if (!userIdIsValid || !passwordIsValid || !passwordsMatch) {
+      console.error("입력 조건을 만족하지 않습니다.");
+      return; // 조건을 만족하지 않을 때 함수를 빠져나갑니다.
+    }
+
+    try {
+      await addDoc(collection(db, "USER"), {
+        bookmark: [],
+        userId,
+        userPassword: password,
+      });
+      alert("회원가입이 완료되었습니다!");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
+  };
+
   return (
     <div className="inner">
-      <div className="input--box">
+      <form className="input--box" onSubmit={handleSubmit}>
         <div className="logo">Newstab</div>
         <Input
           type="text"
@@ -57,8 +89,10 @@ function JoinPage() {
           invalid={!passwordsMatch}
           invalidText="비밀번호가 일치하지 않습니다."
         />
-        <Button className="custom--button">회원가입</Button>
-      </div>
+        <button type="submit" className="custom--button">
+          회원가입
+        </button>
+      </form>
     </div>
   );
 }
