@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, forwardRef } from "react";
 import "./Header.css";
 
 import Button from "react-bootstrap/Button";
@@ -9,7 +9,7 @@ import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu-icon.svg";
 import authenticateAction from "../../redux/acticon/authenticateAction";
 
-function Header() {
+const Header = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const authenticate = useSelector(state => state.auth.authenticate);
   const [keyword, setKeyword] = useState("");
@@ -40,7 +40,7 @@ function Header() {
   });
 
   return (
-    <div className="header">
+    <div className="header" ref={ref}>
       <div className="menu--btn">
         <MenuIcon />
       </div>
@@ -96,6 +96,6 @@ function Header() {
       </div>
     </div>
   );
-}
+});
 
 export default Header;
