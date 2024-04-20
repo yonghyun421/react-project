@@ -14,11 +14,13 @@ function NewsSlider({ title, articles }) {
     <div className="slider-container">
       <h3>{title}</h3>
       <Carousel controls="true">
-        {articles.map(articles => (
-          <Carousel.Item key={articles.id}>
-            <NewsCard articles={articles} />
-          </Carousel.Item>
-        ))}
+        {(articles.length > 5 ? articles.slice(0, 5) : articles).map(
+          article => (
+            <Carousel.Item key={article.id}>
+              <NewsCard articles={article} />
+            </Carousel.Item>
+          ),
+        )}
       </Carousel>
     </div>
   );

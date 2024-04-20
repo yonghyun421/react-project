@@ -41,8 +41,9 @@ function NewsCard({ articles }) {
         <div className="overlay p-2" />
       </div>
       <div className="article-contents">
-        <div>{articles.title}</div>
-        <div>{articles.author}</div>
+        <div className="article-title">{articles?.title}</div>
+        <div className="article-description">{articles?.description}</div>
+        <div className="article-author">{articles?.author}</div>
       </div>
     </div>
   );
@@ -53,6 +54,7 @@ NewsCard.propTypes = {
     url: PropTypes.string,
     urlToImage: PropTypes.string,
     title: PropTypes.string,
+    description: PropTypes.string,
     author: PropTypes.string,
   }).isRequired,
 };

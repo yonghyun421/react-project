@@ -41,7 +41,9 @@ function Mypage() {
                   type="checkbox"
                   id={category.value}
                   name="interest"
-                  defaultChecked={interestList.some(interest => interest.value === category.value)}
+                  defaultChecked={interestList.some(
+                    interest => interest.value === category.value,
+                  )}
                 />
                 <label htmlFor={category.value}>{category.categoryName}</label>
               </li>

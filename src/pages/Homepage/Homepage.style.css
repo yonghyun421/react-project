@@ -8,89 +8,97 @@
   flex-direction: column;
 }
 
-.slide-area {
+.Homepage-area h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 1.2rem 0 0.5rem;
+}
+
+.Homepage-area .news-card {
+  height: 0;
+  padding-bottom: 73%;
+  border-radius: 14px;
+}
+
+.Homepage-area .carousel-indicators {
+  bottom: 60px;
+}
+
+.Homepage-area .carousel-control-next,
+.Homepage-area .carousel-control-prev {
+  height: calc(100% - 60px);
+}
+
+.Home-title {
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-top: 5px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.slide-area,
+.country-area {
+  width: 35%;
+  flex: 0 0 35%;
   background-color: white;
   color: black;
   border-radius: 20px;
-  margin: 10px;
+  padding: 16px;
+}
+
+.weather-area {
+  width: 30%;
+  flex: 1 1 auto
 }
 
 .Homepage-area .row {
   margin: 0;
 }
 
-.country-area {
-  background-color: white;
-  color: black;
-  border-radius: 20px;
-  margin: 10px 0 10px 0;
-}
-
-.weather-area {
-  margin: 10px 0 10px 0;
-  padding: 0;
-}
-
-.area-title {
-  padding: 20px 20px 20px 0;
-  font-size: 30px;
-  font-weight: 700;
-}
-
-.favorite-title {
-  text-align: center;
-  padding: 20px 0 0 0;
-  font-size: 30px;
-  font-weight: 700;
+.mainNews--list {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
 .favorite-area {
   background-color: white;
   color: black;
   border-radius: 20px;
-  margin: 10px 0 10px 0;
+  padding: 16px;
 }
 
 .favorite-news {
-  display: flex;
-  justify-content: space-evenly;
-  overflow-x: scroll;
-}
-
-.favorite-news .slider-container {
-  width: 380px;
-}
-
-.favorite-news .slider-container .news-card {
-  width: 380px;
-  height: 200px;
-}
-
-.favorite-news .slider-container .article-contents {
-  width: 380px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
 }
 
 .refresh-button {
   width: 100%;
   height: 100px;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
 
 @media (max-width: 767px) {
   .favorite-news {
-    display: block;
-    width: 400px;
-    margin: 0 auto;
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .favorite-news .news-card {
-    width: 400px;
-    height: 200px;
+  .mainNews--list {
+    display: flex;
+    flex-direction: column;
   }
 
-  .favorite-news .slider-container .article-contents {
-    width: 400px;
+  .slide-area,
+  .country-area,
+  .weather-area {
+    width: 100%;
+    flex: 1 1 auto;
   }
 }

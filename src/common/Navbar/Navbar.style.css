@@ -1,10 +1,5 @@
-.top-navbar {
-  margin-bottom: 30px;
-}
 .navbar-container {
   width: 100%;
-  /* height: 56px; */
-  /* background-color: #000000; */
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
@@ -12,6 +7,7 @@
   display: flex;
   justify-content: center;
 }
+
 .category-list {
   display: flex;
   justify-content: center;
@@ -65,15 +61,22 @@ html {
     left 0.3s ease 0s;
   width: 0;
 }
+
 .close-btn,
 .dim {
   display: none;
 }
+
 .navbar-container .navbar-nav .nav-link:hover:after {
   width: 100%;
   left: 0;
 }
+
 @media all and (max-width: 767px) {
+  .category-list {
+    padding: 2rem;
+  }
+
   .navbar-container {
     display: none;
     position: fixed;
@@ -82,25 +85,31 @@ html {
     width: 100%;
     height: 100vh;
   }
+
   .navbar-container.open {
     display: block;
   }
+
   .navbar-container.open .flex-row {
     flex-direction: column !important;
   }
+
   .navbar-container .navbar-nav .nav-item {
     padding: 5px 0;
   }
+
   .navbar-container .navbar-nav .nav-link {
     padding: 0;
     text-align: left;
   }
+
   .navbar-container.open .close-btn {
     display: block;
     position: absolute;
     right: 20px;
     top: 15px;
   }
+
   .navbar-container.open .top-navbar {
     position: absolute;
     left: 0;
@@ -111,6 +120,7 @@ html {
     height: 100vh;
     align-items: flex-start;
   }
+
   .navbar-container.open .dim {
     font-size: 0;
     line-height: 0;
@@ -122,5 +132,6 @@ html {
     z-index: 9999;
     background: rgba(0, 0, 0, 0.5);
     border: none;
+    display: block !important;
   }
 }
