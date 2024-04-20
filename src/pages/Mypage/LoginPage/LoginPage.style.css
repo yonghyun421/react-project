@@ -53,6 +53,12 @@
   border: 0 none;
   font-size: 18px;
   font-weight: 700;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
 }
 .custom--button:hover {
   background-color: #f7d10f;
