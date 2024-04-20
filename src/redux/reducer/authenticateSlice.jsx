@@ -1,9 +1,11 @@
+/* eslint-disable */
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   id: "",
   password: "",
   bookmarkList: [],
+  interestList: [],
   authenticate: false,
 };
 
@@ -12,24 +14,20 @@ const authenticateSlice = createSlice({
   initialState,
   reducers: {
     login(state, action) {
-      // eslint-disable-next-line no-param-reassign
       state.id = action.payload.id;
-      // eslint-disable-next-line no-param-reassign
       state.password = action.payload.password;
-      // eslint-disable-next-line no-param-reassign
-      state.bookmarkList = action.payload.bookmarkList;
-      // eslint-disable-next-line no-param-reassign
+      state.bookmarkList = action.payload.bookmarkL
+      state.interestList = action.payload.interestL
       state.authenticate = true;
+      localStorage.setItem("authenticate", "true");
     },
     logout(state) {
-      // eslint-disable-next-line no-param-reassign
       state.id = "";
-      // eslint-disable-next-line no-param-reassign
       state.password = "";
-      // eslint-disable-next-line no-param-reassign
-      state.bookmarkList = [];
-      // eslint-disable-next-line no-param-reassign
+      state.bookmarkList = null;
+      state.interestList = null;
       state.authenticate = false;
+      localStorage.setItem("authenticate", "false");
     },
   },
 });

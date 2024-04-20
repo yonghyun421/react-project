@@ -87,7 +87,15 @@ function LoginPage() {
           // 비밀번호 일치함
           const userData = querySnapshot.docs[0].data();
           const bookmarkList = userData.bookmark;
-          dispatch(authenticateAction.login(userId, password, bookmarkList));
+          const interestList = userData.interest;
+          dispatch(
+            authenticateAction.login(
+              userId,
+              password,
+              bookmarkList,
+              interestList,
+            ),
+          );
           navigate("/");
         }
       }

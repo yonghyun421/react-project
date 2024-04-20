@@ -34,9 +34,9 @@ function NewsPage() {
   } = keyword
     ? useSearchNewsQuery({ keyword })
     : useNewsListQuery({ category });
-  // eslint-disable-next-line
-  console.log(data);
   const newsList = data && data.pages.flatMap(page => page.articles);
+
+  console.log("newslist:", newsList);
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -50,22 +50,18 @@ function NewsPage() {
 
   return (
     <div>
-      <h2 className="news-title">
-        {keyword ? "검색" : categoryNames[category] || category} 뉴스
-      </h2>
+      <div className="whole">
+        <h2 className="news-title">
+          {keyword ? "검색" : categoryNames[category] || category} 뉴스
+        </h2>
+      </div>
       <div className="news-list-total">
         <ul className="news-list-box">
           {newsList &&
             newsList.map(news => (
-              <li key={news.id || news.url} className="article-layout">
-                <div className="article-image">
-                  <img src={news.urlToImage} alt={news.title} />
-                </div>
+              <li key={news.id || news.url}>
+                {" "}
                 <NewsCard articles={news} />
-                <div className="article-content">
-                  <h3>{news.title}</h3>
-                  <p>{news.description}</p>
-                </div>
               </li>
             ))}
         </ul>
