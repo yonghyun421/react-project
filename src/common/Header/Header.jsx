@@ -44,67 +44,72 @@ const Header = forwardRef((props, ref) => {
   });
 
   return (
-    <div className="header" ref={ref}>
-      <button
-        type="button"
-        tabIndex={0}
-        onClick={handleMenuIconClick}
-        className="menu--icon menu--btn"
-        aria-label="menuIcon">
-        <MenuIcon />
-      </button>
-      <div className="logo">
-        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-          NewsTab
-        </Link>
-      </div>
-      <div className="util--Btn">
-        <div className="mypage--btn">
-          <button
-            type="button"
-            className="text-white"
-            onClick={() => loginout()}>
-            {authenticate ? "로그아웃" : "로그인"}
-          </button>
-          <Link as={Link} to="/mypage" className="text-white">
-            마이페이지
+    <>
+      <div className="header" ref={ref}>
+        <button
+          type="button"
+          tabIndex={0}
+          onClick={handleMenuIconClick}
+          className="menu--icon menu--btn"
+          aria-label="menuIcon">
+          <MenuIcon />
+        </button>
+        <div className="logo">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            NewsTab
           </Link>
         </div>
-        <div className="search--btn">
-          <div
-            role="button"
-            tabIndex={0}
-            onClick={handleSearchIconClick}
-            className={`search--icon ${isSearchBoxVisible ? "hidden" : ""}`}
-            onKeyPress={e => {
-              if (e.key === "Enter") {
-                handleSearchIconClick();
-              }
-            }}>
-            검색
-            <SearchIcon />
+        <div className="util--Btn">
+          <div className="mypage--btn">
+            <button
+              type="button"
+              className="text-white"
+              onClick={() => loginout()}>
+              {authenticate ? "로그아웃" : "로그인"}
+            </button>
+            <Link as={Link} to="/mypage" className="text-white">
+              마이페이지
+            </Link>
           </div>
-          <Form
-            className={`d-flex search--box ${
-              isSearchBoxVisible ? "" : "hidden"
-            }`}
-            onSubmit={searchByKeyword}>
-            <Form.Control
-              type="search"
-              placeholder="SEARCH"
-              className="me-2"
-              aria-label="Search"
-              value={keyword}
-              onChange={event => setKeyword(event.target.value)}
-            />
-            <Button type="submit">
+          <div className="search--btn">
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={handleSearchIconClick}
+              className={`search--icon ${isSearchBoxVisible ? "hidden" : ""}`}
+              onKeyPress={e => {
+                if (e.key === "Enter") {
+                  handleSearchIconClick();
+                }
+              }}>
+              검색
               <SearchIcon />
-            </Button>
-          </Form>
+            </div>
+            <Form
+              className={`d-flex search--box ${
+                isSearchBoxVisible ? "" : "hidden"
+              }`}
+              onSubmit={searchByKeyword}>
+              <Form.Control
+                type="search"
+                placeholder="SEARCH"
+                className="me-2"
+                aria-label="Search"
+                value={keyword}
+                onChange={event => setKeyword(event.target.value)}
+              />
+              <Button type="submit">
+                <SearchIcon />
+              </Button>
+            </Form>
+          </div>
         </div>
       </div>
-      <NavigationBar isMenuIconVisible={isMenuIconVisible} />
-    </div>
+      <NavigationBar
+        isMenuIconVisible={isMenuIconVisible}
+        handleMenuIconClick={handleMenuIconClick}
+      />
+    </>
   );
 });
 

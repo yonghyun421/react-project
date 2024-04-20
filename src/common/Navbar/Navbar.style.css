@@ -1,15 +1,20 @@
 .top-navbar {
   margin-bottom: 30px;
 }
-
 .navbar-container {
   width: 100%;
-  height: 56px;
+  /* height: 56px; */
   /* background-color: #000000; */
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
   z-index: 9999;
+  display: flex;
+  justify-content: center;
+}
+.category-list {
+  display: flex;
+  justify-content: center;
 }
 
 body,
@@ -34,7 +39,6 @@ html {
 .navbar-container .navbar-nav .nav-item {
   display: block;
   position: relative;
-  padding: 15px 0;
 }
 
 .navbar-container .navbar-nav .nav-link {
@@ -61,27 +65,62 @@ html {
     left 0.3s ease 0s;
   width: 0;
 }
-
+.close-btn,
+.dim {
+  display: none;
+}
 .navbar-container .navbar-nav .nav-link:hover:after {
   width: 100%;
   left: 0;
 }
-
 @media all and (max-width: 767px) {
   .navbar-container {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 100%;
     height: 100vh;
   }
   .navbar-container.open {
     display: block;
-    .flex-row {
-      flex-direction: column !important;
-      align-items: center !important;
-      margin-top: 60px;
-    }
+  }
+  .navbar-container.open .flex-row {
+    flex-direction: column !important;
+  }
+  .navbar-container .navbar-nav .nav-item {
+    padding: 5px 0;
+  }
+  .navbar-container .navbar-nav .nav-link {
+    padding: 0;
+    text-align: left;
+  }
+  .navbar-container.open .close-btn {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+  .navbar-container.open .top-navbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    width: 60%;
+    min-width: 200px;
+    height: 100vh;
+    align-items: flex-start;
+  }
+  .navbar-container.open .dim {
+    font-size: 0;
+    line-height: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
   }
 }
