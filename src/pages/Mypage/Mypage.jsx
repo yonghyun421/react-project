@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { db } from "../../firebase-config";
 import "./Mypage.style.css";
 import noImage from "../../assets/noImage.jpg";
+import NEWS_CATEGORY from "../../constants/NEWS_CATEGORY"
 
 function Mypage() {
   const userId = useSelector(state => state.auth.id);
@@ -33,30 +34,12 @@ function Mypage() {
         <div className="profile--like">
           <p className="profile--like__title">관심분야 설정</p>
           <ul className="profile--like__list">
-            <li>
-              <input type="checkbox" id="business" name="interest" />
-              <label htmlFor="business">경제</label>
-            </li>
-            <li>
-              <input type="checkbox" id="entertainment" name="interest" />
-              <label htmlFor="entertainment">연애</label>
-            </li>
-            <li>
-              <input type="checkbox" id="general" name="interest" />
-              <label htmlFor="general">일반</label>
-            </li>
-            <li>
-              <input type="checkbox" id="health" name="interest" />
-              <label htmlFor="health">건강</label>
-            </li>
-            <li>
-              <input type="checkbox" id="science" name="interest" />
-              <label htmlFor="science">과학</label>
-            </li>
-            <li>
-              <input type="checkbox" id="sports" name="interest" />
-              <label htmlFor="sports">스포츠</label>
-            </li>
+            {NEWS_CATEGORY.map((category) => (
+              <li key={category.value}>
+                <input type="checkbox" id={category.value} name="interest" />
+                <label htmlFor={category.value}>{category.categoryName}</label>
+              </li>
+            ))}
           </ul>
           <button type="button" className="profile--btn">
             저장
