@@ -4,10 +4,11 @@
   min-height: 100vh;
   background-color: #F7F7F7;
 }
+
 .wrap .inner {
   flex: 1;
 }
+
 body {
   background-color: lightgray !important;
-  color: white !important;
 }
