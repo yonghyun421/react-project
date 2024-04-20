@@ -3,18 +3,18 @@ import api from "../utils/api";
 
 const API_KEY = process.env.REACT_APP_KEY;
 
-const fetchCompanyNews = async (queryData) => {
-  const company = queryData.queryKey[1];
+const fetchCompanyNews = async queryData => {
+  const country = queryData.queryKey[1];
   const response = await api.get(
-    `/top-headlines?sources=${company}&apiKey=${API_KEY}`
+    `/top-headlines?country=${country}&apiKey=${API_KEY}`,
   );
   return response.data;
 };
 // sources=bbc-news
 // eslint-disable-next-line
-export const useMediaCompanyNews = (company) => {
+export const useMediaCompanyNews = country => {
   return useQuery({
-    queryKey: ["언론사별뉴스", company],
+    queryKey: ["언론사별뉴스", country],
     queryFn: fetchCompanyNews,
   });
 };

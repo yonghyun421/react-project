@@ -40,11 +40,7 @@ function NewsCard({ articles }) {
         <div>{articles.title}</div>
         <div>{articles.author}</div>
       </div>
-      <div className="article-contents">
-        <div>{articles.title}</div>
-        <div>{articles.author}</div>
-      </div>
-    </>
+    </div>
   );
 }
 

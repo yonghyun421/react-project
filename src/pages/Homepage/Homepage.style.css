@@ -1,0 +1,21 @@
+.slide-area {
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 5px;
+  margin: 40px;
+}
+
+.country-area {
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 5px;
+  margin: 40px 0 40px 40px;
+}
+
+.area-title {
+  padding: 20px 20px 20px 0;
+  font-size: 30px;
+  font-weight: 700;
+}
