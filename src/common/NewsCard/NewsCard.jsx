@@ -34,7 +34,7 @@ function NewsCard({ articles }) {
       <div
         className="news-card"
         style={{
-          backgroundImage: `url(${articles.urlToImage ? articles.urlToImage : "../../../public/nodata.png"})`,
+          backgroundImage: `url(${articles.urlToImage ? articles.urlToImage : "/nodata.png"})`,
         }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >
