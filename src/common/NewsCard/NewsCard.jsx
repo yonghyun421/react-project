@@ -32,8 +32,10 @@ function NewsCard({ articles }) {
       role="button"
       tabIndex={0}>
       <div
-        className="movie-card"
-        style={{ backgroundImage: `url(${articles.urlToImage})` }}>
+        className="news-card"
+        style={{ backgroundImage: `url(${articles.urlToImage})` }}
+        //   onClick={() => navigate(`/movies/${articles.id}`)}
+      >
         <div className="overlay p-2" />
       </div>
       <div className="article-contents">

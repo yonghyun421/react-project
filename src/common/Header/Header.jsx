@@ -14,6 +14,7 @@ function Header() {
 
   const searchByKeyword = event => {
     event.preventDefault();
+    console.log("키워드", keyword);
     navigate(`/news?q=${keyword}`);
     setKeyword("");
   };
@@ -54,7 +55,9 @@ function Header() {
             <SearchIcon />
           </div>
           <Form
-            className={`d-flex search--box ${isSearchBoxVisible ? "" : "hidden"}`}
+            className={`d-flex search--box ${
+              isSearchBoxVisible ? "" : "hidden"
+            }`}
             onSubmit={searchByKeyword}>
             <Form.Control
               type="search"
