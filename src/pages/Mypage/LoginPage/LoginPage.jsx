@@ -12,8 +12,8 @@ function LoginPage() {
   const [loginError, setLoginError] = useState(false);
 
   const [errorMessages, setErrorMessages] = useState({
-    userIdInvalidText: "",
-    userPasswordInvalidText: "",
+    userId: { invalid: false, invalidText: "" },
+    userPassword: { invalid: false, invalidText: "" },
   });
 
   const handleLogin = async event => {
@@ -30,8 +30,8 @@ function LoginPage() {
       if (userIdquerySnapshot.empty) {
         // 아이디 없음
         setErrorMessages({
-          userIdInvalidText: "존재하지 않는 아이디입니다.",
-          userPasswordInvalidText: "",
+          userId: { invalid: true, invalidText: "존재하지 않는 아이디입니다." },
+          userPassword: { invalid: false, invalidText: "" },
         });
       } else {
         // 아이디 있음
@@ -46,8 +46,11 @@ function LoginPage() {
           // 비밀번호까지 일치하는 회원정보 없음
           setLoginError(true);
           setErrorMessages({
-            userIdInvalidText: "",
-            userPasswordInvalidText: "비밀번호가 틀렸습니다.",
+            userId: { invalid: false, invalidText: "" },
+            userPassword: {
+              invalid: true,
+              invalidText: "비밀번호가 틀렸습니다.",
+            },
           });
         } else {
           // 비밀번호 일치함
@@ -57,8 +60,14 @@ function LoginPage() {
       }
     } else {
       setErrorMessages({
-        userIdInvalidText: "아이디를 입력해주세요.",
-        userPasswordInvalidText: "비밀번호를 입력해주세요.",
+        userId: {
+          invalid: true,
+          invalidText: "아이디와 비밀번호를 입력해주세요.",
+        },
+        userPassword: {
+          invalid: true,
+          invalidText: "아이디와 비밀번호를 입력해주세요.",
+        },
       });
     }
   };
@@ -70,16 +79,16 @@ function LoginPage() {
         <Input
           placeholder="아이디"
           value={userId}
-          invalid={loginError}
-          invalidText={errorMessages.userIdInvalidText}
+          invalid={errorMessages.userId.invalid}
+          invalidText={errorMessages.userId.invalidText}
           onChange={event => setUserId(event.target.value)}
         />
         <Input
           type="password"
           value={password}
-          invalid={loginError}
+          invalid={errorMessages.userPassword.invalid}
           placeholder="비밀번호"
-          invalidText={errorMessages.userPasswordInvalidText}
+          invalidText={errorMessages.userPassword.invalidText}
           onChange={event => setPassword(event.target.value)}
         />
         <button type="button" className="custom--button" onClick={handleLogin}>
