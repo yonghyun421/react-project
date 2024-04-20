@@ -10,6 +10,7 @@ import MyPage from "./pages/Mypage/Mypage";
 import JoinPage from "./pages/Mypage/JoinPage/JoinPage";
 import LoginPage from "./pages/Mypage/LoginPage/LoginPage";
 import BookMarkPage from "./pages/Mypage/BookMarkPage/BookMarkPage";
+import TooManyRequestPage from "./pages/TooManyRequestPage/TooManyRequestPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="login" element={<LoginPage />} />
             <Route path="bookmark" element={<BookMarkPage />} />
           </Route>
+          <Route path="error" element={<TooManyRequestPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
