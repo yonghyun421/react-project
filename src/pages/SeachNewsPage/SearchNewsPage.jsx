@@ -5,7 +5,7 @@ import { useSearchNewsQuery } from "../../hooks/useSearchNews";
 import NewsCard from "../../common/NewsCard/NewsCard";
 import Header from "../../common/Header/Header";
 
-const SearchNewsPage = () => {
+function SearchNewsPage() {
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(1);
   const [sortType, setSortType] = useState(null);
@@ -14,7 +14,7 @@ const SearchNewsPage = () => {
   const { data, isLoading, isError, error, refetch } = useSearchNewsQuery({
     keyword,
   });
-  const newsList = data?.articles;
+  const newsList = data && data.articles;
 
   const handleSortPopularRank = () => {
     setSortType("popularity");
@@ -45,13 +45,13 @@ const SearchNewsPage = () => {
 
     if (sortType === "popularity") {
       return [...newsList].sort((a, b) => b.popularity - a.popularity);
-    } else if (sortType === "publishedAt") {
+    }
+    if (sortType === "publishedAt") {
       return [...newsList].sort(
         (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt),
       );
-    } else {
-      return newsList;
     }
+    return newsList;
   };
 
   if (isLoading) {
@@ -66,15 +66,16 @@ const SearchNewsPage = () => {
     <div>
       <div>
         <ul className="news-list-box">
-          {newsList?.map(news => (
-            <li key={news?.url}>
-              <NewsCard />
-            </li>
-          ))}
+          {newsList &&
+            newsList.map(news => (
+              <li key={news && news.url}>
+                <NewsCard />
+              </li>
+            ))}
         </ul>
       </div>
     </div>
   );
-};
+}
 
 export default SearchNewsPage;

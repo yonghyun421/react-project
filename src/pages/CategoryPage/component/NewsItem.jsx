@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
 const { categoryName } = useParams;
@@ -17,5 +18,21 @@ function NewsItem({ title, description, url, publishedAt, urlToImage }) {
     </div>
   );
 }
+
+NewsItem.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string,
+  publishedAt: PropTypes.string,
+  urlToImage: PropTypes.string,
+};
+
+NewsItem.defaultProps = {
+  title: "",
+  description: "",
+  url: "",
+  publishedAt: "",
+  urlToImage: "",
+};
 
 export default NewsItem;
