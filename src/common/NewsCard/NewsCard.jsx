@@ -22,7 +22,7 @@ function NewsCard({ articles }) {
 
   return (
     <div
-      className="news--card"
+      className="newscard-area"
       onClick={newsDetailPage}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {
@@ -33,7 +33,9 @@ function NewsCard({ articles }) {
       tabIndex={0}>
       <div
         className="news-card"
-        style={{ backgroundImage: `url(${articles.urlToImage})` }}
+        style={{
+          backgroundImage: `url(${articles.urlToImage ? articles.urlToImage : "../../../public/nodata.png"})`,
+        }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >
         <div className="overlay p-2" />

@@ -26,7 +26,7 @@ function WeatherBox() {
   useEffect(() => {
     getCurrentLocation();
   }, []);
-  console.log("weather", weather);
+
   return (
     <div className="weatherbox-area">
       <div className="container">
@@ -34,18 +34,18 @@ function WeatherBox() {
           {weather ? (
             <>
               <div>{dayjs().format("YYYY년 MM월 DD일")}</div>
-              <div>{weather.name}</div>
+              <h2>{weather.name}</h2>
               <div>{weather.main.temp}°C</div>
-              <div>{wDescEngToKor(weather.cod)}</div>
+              <h5>{wDescEngToKor(weather.cod)}</h5>
               <div className="weather-description-title">
                 <div>습도</div>
                 <div>최저 기온</div>
                 <div>최고 기온</div>
               </div>
               <div className="weather-description">
-                <div>{weather.main.humidity}</div>
-                <div>{weather.main.temp_min}</div>
-                <div>{weather.main.temp_max}</div>
+                <div>{weather.main.humidity}%</div>
+                <div>{weather.main.temp_min}°C</div>
+                <div>{weather.main.temp_max}°C</div>
               </div>
             </>
           ) : null}
