@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import authenticateAction from "../../../redux/acticon/authenticateAction";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
 import "./LoginPage.style.css";
 
 function LoginPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(false);
 
   const [errorMessages, setErrorMessages] = useState({
     userId: { invalid: false, invalidText: "" },
@@ -18,7 +20,6 @@ function LoginPage() {
 
   const handleLogin = async event => {
     event.preventDefault();
-    setLoginError(null);
 
     if (userId) {
       const userIdQuery = query(
@@ -44,7 +45,6 @@ function LoginPage() {
 
         if (querySnapshot.empty) {
           // 비밀번호까지 일치하는 회원정보 없음
-          setLoginError(true);
           setErrorMessages({
             userId: { invalid: false, invalidText: "" },
             userPassword: {
@@ -54,8 +54,8 @@ function LoginPage() {
           });
         } else {
           // 비밀번호 일치함
-          setLoginError(false);
           navigate("/");
+          dispatch(authenticateAction.login(userId, password));
         }
       }
     } else {

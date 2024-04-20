@@ -21,20 +21,6 @@
 }
 
 .myPage--box {
-<<<<<<< HEAD
-  max-width: 500px;
-  width: calc(100% - 32px);
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 14px;
-}
-
-.profile--wrap {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-=======
     max-width: 500px;
     width: calc(100% - 32px);
     padding: 16px 16px 24px;
@@ -55,7 +41,6 @@
     font-size: 1.1rem;
     padding-bottom: 0.2rem;
     font-weight: 700;
->>>>>>> f415351a67808758634879be664e7a2ca804d490
 }
 
 .profile--info p,
@@ -111,15 +96,6 @@
 }
 
 .profile--like__list {
-<<<<<<< HEAD
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 1px;
-  grid-row-gap: 40px;
-  list-style: none;
-  padding: 0;
-}
-=======
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
@@ -165,4 +141,3 @@
 .member_delete a {
     color: #aaa;
 }
->>>>>>> f415351a67808758634879be664e7a2ca804d490

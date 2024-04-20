@@ -1,11 +1,11 @@
 import React from "react";
-import "./Mypage.style.css";
 import { Link } from "react-router-dom";
+import "./Mypage.style.css";
 import noImage from "../../assets/noImage.jpg";
 
 function Mypage() {
   return (
-    <div className="myPage--wrap">
+    <div className="inner myPage--wrap">
       <h2>마이페이지</h2>
       <div className="myPage--box">
         <div className="profile--wrap">
