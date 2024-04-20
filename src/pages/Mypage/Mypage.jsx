@@ -10,6 +10,7 @@ import NEWS_CATEGORY from "../../constants/NEWS_CATEGORY"
 function Mypage() {
   const userId = useSelector(state => state.auth.id);
   const bookmarkList = useSelector(state => state.auth.bookmarkList);
+  const interestList = useSelector(state => state.auth.interestList);
 
   return (
     <div className="inner myPage--wrap">

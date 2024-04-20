@@ -34,9 +34,9 @@ function NewsPage() {
   } = keyword
     ? useSearchNewsQuery({ keyword })
     : useNewsListQuery({ category });
-  // eslint-disable-next-line
-  console.log(data);
   const newsList = data && data.pages.flatMap(page => page.articles);
+
+  console.log("newslist:", newsList);
 
   if (isLoading) return <LoadingSpinner />;
 
