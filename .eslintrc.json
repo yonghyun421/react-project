@@ -14,6 +14,7 @@
       }
     ],
     "react/no-array-index-key": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "prefer-default-export": "off"
   }
 }
