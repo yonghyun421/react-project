@@ -3,7 +3,7 @@ import { Alert } from "react-bootstrap";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useLatestNews } from "../../../../hooks/useLatestNews";
 
-const LatestNewsSlide = () => {
+function LatestNewsSlide() {
   const { data, isError, isLoading, error } = useLatestNews();
 
   if (isLoading) return <div>Loading...</div>;
@@ -11,12 +11,12 @@ const LatestNewsSlide = () => {
   return (
     <div>
       <NewsSlider
-        title={"Latest News"}
+        title="Latest News"
         articles={data.articles}
         // responsive={responsive}
       />
     </div>
   );
-};
+}
 
 export default LatestNewsSlide;

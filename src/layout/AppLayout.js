@@ -6,7 +6,7 @@ import Navbar from "../common/Navbar/Navbar";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="wrap">
       <Header />
       <Navbar />
       <Outlet />

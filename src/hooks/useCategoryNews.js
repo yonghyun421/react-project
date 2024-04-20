@@ -12,7 +12,7 @@ const fetchCategoryNews = async queryData => {
 };
 // sources=bbc-news
 // eslint-disable-next-line
-export const useCategoryNews = category => {
+export const useCategoryNews = (category) => {
   return useQuery({
     queryKey: ["분야별뉴스", category],
     queryFn: fetchCategoryNews,

@@ -41,8 +41,9 @@ function NavigationBar() {
                 <Nav.Link
                   as={NavLink}
                   to={`/news/category/${category}`}
-                  activeClassName="active"
-                  className="categories-list">
+                  className={({ isActive }) =>
+                    `categories-list ${isActive ? "active-link" : ""}`
+                  }>
                   {categoryNames[category]}
                 </Nav.Link>
               </Nav.Item>
