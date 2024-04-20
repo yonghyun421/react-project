@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import { db } from "../../../firebase-config";
 import noImage from "../../../assets/noImage.jpg";
 import "./BookMarkPage.style.css";
 
-function BookMarkPage() {
+async function BookMarkPage() {
+  const [bookmarkList, setBookmarkList] = useState(null);
+
+  // Firestore에서 userId 검증
+  // const userQuery = query(
+  //   collection(db, "USER"),
+  //   where("userId", "==", newUserId),
+  // );
+  // const querySnapshot = await getDocs(userQuery);
+
   return (
     <div className="bookMarkPage--wrap">
       <div className="bookMarkPage--box">

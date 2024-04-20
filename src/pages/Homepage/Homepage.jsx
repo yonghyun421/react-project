@@ -10,9 +10,9 @@ import YoutubeBox from "./components/YoutubeBox/YoutubeBox";
 function Homepage() {
   return (
     // <div>
-    <Container className="Homepage-area">
+    <div className="Homepage-area">
       <Row className="justify-content-md-center">
-        <Col xs={12} md={11} className="favorite-area">
+        <Col xs={12} md={12} className="favorite-area box-shadow">
           <div className="favorite-title">관심 분야 뉴스</div>
           <div className="favorite-news">
             <CategoryNewsSlide category="sports" />
@@ -22,7 +22,7 @@ function Homepage() {
         </Col>
       </Row>
       <Row className="justify-content-md-center">
-        <Col xs={12} md={4} className="country-area">
+        <Col xs={12} md={4} className="country-area box-shadow">
           {/* aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilinitjpkrltlvmamxmyngnlnonzphplptrorsrusasesgsiskthtrtwuausveza */}
           <div className="area-title">나라별 최신뉴스</div>
           <MediaCompanySlide country="cn" />
@@ -39,7 +39,7 @@ function Homepage() {
             />
           </div>
         </Col>
-        <Col md={4} className="slide-area">
+        <Col md={4} className="slide-area box-shadow">
           <div className="area-title">분야별 최신뉴스</div>
           <LatestNewsSlide />
           <CategoryNewsSlide category="sports" />
@@ -53,7 +53,7 @@ function Homepage() {
           <YoutubeBox />
         </Col>
       </Row>
-    </Container>
+    </div>
     // </div>
   );
 }
