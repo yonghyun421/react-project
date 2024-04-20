@@ -12,7 +12,7 @@ const fetchCompanyNews = async queryData => {
 };
 // sources=bbc-news
 // eslint-disable-next-line
-export const useMediaCompanyNews = (company) => {
+export const useMediaCompanyNews = company => {
   return useQuery({
     queryKey: ["언론사별뉴스", company],
     queryFn: fetchCompanyNews,

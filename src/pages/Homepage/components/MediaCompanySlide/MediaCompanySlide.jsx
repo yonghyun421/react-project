@@ -3,7 +3,7 @@ import { Alert } from "react-bootstrap";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useMediaCompanyNews } from "../../../../hooks/useMediaCompanyNews";
 
-const MediaCompanySlide = ({ company }) => {
+function MediaCompanySlide({ company }) {
   const { data, isError, isLoading, error } = useMediaCompanyNews(company);
 
   if (isLoading) return <div>Loading...</div>;
@@ -17,6 +17,6 @@ const MediaCompanySlide = ({ company }) => {
       />
     </div>
   );
-};
+}
 
 export default MediaCompanySlide;
