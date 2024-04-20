@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import useSearchYoutubeQuery from "../../../../hooks/useSearchYoutube";
 import "./YoutubeBox.style.css";
+import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
 
 function YoutubeBox() {
   const [query, setQuery] = useSearchParams();
@@ -18,9 +19,7 @@ function YoutubeBox() {
     setQuery(newQuery, { replace: true });
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <LoadingSpinner />;
   if (isError || !data || !data.items) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
