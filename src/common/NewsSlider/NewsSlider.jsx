@@ -1,10 +1,14 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "./NewsSlider.style.css";
 import "react-multi-carousel/lib/styles.css";
-import NewsCard from "../NewsCard/NewsCard";
 import { responsive } from "../../constants/responsive";
+import NewsCard from "../NewsCard/NewsCard";
 
 function NewsSlider({ title, articles }) {
   return (

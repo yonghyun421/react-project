@@ -4,6 +4,7 @@ import { Alert } from "react-bootstrap";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useCategoryNews } from "../../../../hooks/useCategoryNews";
 
+// eslint-disable-next-line react/prop-types
 function CategoryNewsSlide({ category }) {
   const { data, isError, isLoading, error } = useCategoryNews(category);
 

@@ -5,6 +5,10 @@ import AppLayout from "./layout/AppLayout";
 import Homepage from "./pages/Homepage/Homepage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
+<<<<<<< HEAD
+=======
+import NewsDetailPage from "./pages/NewsDetailPage/NewsDetailPage";
+>>>>>>> 30a404b (conflict fix)
 import MyPage from "./pages/Mypage/Mypage";
 import JoinPage from "./pages/Mypage/JoinPage/JoinPage";
 import LoginPage from "./pages/Mypage/LoginPage/LoginPage";
