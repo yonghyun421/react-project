@@ -12,7 +12,7 @@ function MediaCompanySlide({ company }) {
   return (
     <div>
       <NewsSlider
-        title={company}
+        title={`${country}'s News`}
         articles={data.articles}
         // responsive={responsive}
       />

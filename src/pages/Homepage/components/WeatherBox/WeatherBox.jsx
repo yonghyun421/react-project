@@ -1,42 +1,55 @@
-/* eslint-disable */
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import dayjs from "dayjs";
+import wDescEngToKor from "../../../../utils/weather";
+import "./WeatherBox.style.css";
 
 function WeatherBox() {
   const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(false);
+
+  const getWeatherByCurrentLocation = async (lat, lon) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=32e35cf8d2f27f04f02af9af8c77e52c&units=metric`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setWeather(data);
+  };
+
+  const getCurrentLocation = () => {
+    // eslint-disable-next-line no-undef
+    navigator.geolocation.getCurrentPosition(position => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      getWeatherByCurrentLocation(lat, lon);
+    });
+  };
 
   useEffect(() => {
     getCurrentLocation();
   }, []);
 
-  const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-      getWeatherByCurrentLocation(lat, lon);
-    });
-  };
-
-  const getWeatherByCurrentLocation = async (lat, lon) => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=32e35cf8d2f27f04f02af9af8c77e52c&units=metric`;
-    setLoading(true);
-    let response = await fetch(url);
-    let data = await response.json();
-    setWeather(data);
-    setLoading(false);
-  };
-
   return (
-    <div>
-      <div className={"container"}>
-        {weather && 
-        <div className={"weather-box"}>
-          <div>{weather.name}</div>
-          <h2>{weather.main.temp}°C</h2>
-          <h3>{weather.weather[0].description}</h3>
+    <div className="weatherbox-area">
+      <div className="container">
+        <div className="weather-box">
+          {weather ? (
+            <>
+              <div>{dayjs().format("YYYY년 MM월 DD일")}</div>
+              <h2>{weather.name}</h2>
+              <div>{weather.main.temp}°C</div>
+              <h5>{wDescEngToKor(weather.cod)}</h5>
+              <div className="weather-description-title">
+                <div>습도</div>
+                <div>최저 기온</div>
+                <div>최고 기온</div>
+              </div>
+              <div className="weather-description">
+                <div>{weather.main.humidity}%</div>
+                <div>{weather.main.temp_min}°C</div>
+                <div>{weather.main.temp_max}°C</div>
+              </div>
+            </>
+          ) : null}
         </div>
-        }
       </div>
     </div>
   );

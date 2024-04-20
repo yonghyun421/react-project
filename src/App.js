@@ -5,7 +5,7 @@ import AppLayout from "./layout/AppLayout";
 import Homepage from "./pages/Homepage/Homepage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
-import NewsDetail from "./pages/NewsDetailPage/NewsDetailPage";
+import NewsDetailPage from "./pages/NewsDetailPage/NewsDetailPage";
 import MyPage from "./pages/Mypage/Mypage";
 import JoinPage from "./pages/Mypage/JoinPage/JoinPage";
 import LoginPage from "./pages/Mypage/LoginPage/LoginPage";
