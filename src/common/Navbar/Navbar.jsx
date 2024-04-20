@@ -28,7 +28,7 @@ function NavigationBar(props) {
   const { isMenuIconVisible, handleMenuIconClick } = props;
   return (
     <div>
-      <div className={`navbar-container ${isMenuIlint - disae ? "open" : ""}`}>
+      <div className={`navbar-container ${isMenuIconVisible ? "open" : ""}`}>
         <button type="button" className="dim" onClick={handleMenuIconClick}>
           뒷배경
         </button>
