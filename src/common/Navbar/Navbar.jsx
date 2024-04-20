@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.style.css";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
@@ -24,16 +23,17 @@ const categoryNames = {
   technology: "기술",
 };
 
-function NavigationBar() {
+function NavigationBar(props) {
+  const { isMenuIconVisible } = props;
   return (
-    <div className="navbar-container">
+    <div className={`navbar-container ${isMenuIconVisible ? "open" : ""}`}>
       <Navbar
         collapseOnSelect
         expand="lg"
         bg="light"
         variant="light"
         className="top-navbar">
-        <Container>
+        <div>
           <Nav className="flex-row">
             {/* eslint-disable react/no-array-index-key */}
             {categories.map((category, index) => (
@@ -50,7 +50,7 @@ function NavigationBar() {
               </Nav.Item>
             ))}
           </Nav>
-        </Container>
+        </div>
       </Navbar>
     </div>
   );
