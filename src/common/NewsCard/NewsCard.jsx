@@ -15,16 +15,16 @@ function NewsCard({ articles }) {
 
   const newsDetailPage = () => {
     const newsId = extractNumber(articles?.url);
-    navigate(`/news/${newsId}`);
+    navigate(`/news/${newsId}`, { state: { articleData: articles } });
   };
 
   return (
     <div
-      className=""
-      onClick={() => newsDetailPage(articles?.url)}
+      className="news--card"
+      onClick={newsDetailPage}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {
-          newsDetailPage(articles?.url);
+          newsDetailPage();
         }
       }}
       role="button"
