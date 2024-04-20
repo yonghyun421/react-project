@@ -28,7 +28,7 @@ function YoutubeBox() {
   return (
     <div className="youtubebox-area box-shadow">
       <div className="conatiner">
-        <div className="area-title">유투브 최신 영상</div>
+        <h2 className="area-title Home-title">유투브 최신 영상</h2>
         <div className="youtubeb-box-list">
           {data.items.map(item => {
             if (item.id.kind === "youtube#video") {

@@ -29,24 +29,30 @@ function WeatherBox() {
 
   return (
     <div className="weatherbox-area box-shadow">
-      <div className="container">
+      <div className="weateherbox-wrap">
         <div className="weather-box">
           {weather ? (
             <>
-              <div>{dayjs().format("YYYY년 MM월 DD일")}</div>
-              <h2>{weather.name}</h2>
-              <div>{weather.main.temp}°C</div>
-              <h5>{wDescEngToKor(weather.cod)}</h5>
-              <div className="weather-description-title">
-                <div>습도</div>
-                <div>최저 기온</div>
-                <div>최고 기온</div>
+              <div className="weather-date">
+                {dayjs().format("YYYY년 MM월 DD일")}
               </div>
-              <div className="weather-description">
-                <div>{weather.main.humidity}%</div>
-                <div>{weather.main.temp_min}°C</div>
-                <div>{weather.main.temp_max}°C</div>
-              </div>
+              <h2 className="weather-title">{weather.name}</h2>
+              <div className="weather-temp">{weather.main.temp}°C</div>
+              <h5 className="weather-">{wDescEngToKor(weather.cod)}</h5>
+              <ul className="weather-description">
+                <li>
+                  습도
+                  <span>{weather.main.humidity}%</span>
+                </li>
+                <li>
+                  최저 기온
+                  <span>{weather.main.temp_min}°C</span>
+                </li>
+                <li>
+                  최고 기온
+                  <span>{weather.main.temp_max}°C</span>
+                </li>
+              </ul>
             </>
           ) : null}
         </div>

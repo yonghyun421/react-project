@@ -1,33 +1,29 @@
 .news-list-total {
-  width: 80%;
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 1rem 16px;
 }
 
-.newscard-area {
+.news-list-box .newscard-area {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
   cursor: pointer;
   background-color: #fff;
-  border: 0.2px solid darkgray;
-  box-shadow: 3px 3px 3px darkgray;
-  border-radius: 20px;
+  border-radius: 14px;
   overflow: hidden;
-}
-.newscard-area:hover {
-  transition: box-shadow 0.3s ease-in-out;
-  box-shadow: 6px 6px 6px darkgray;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.news-card {
+.news-list-box .news-card {
   width: 40%;
   background-size: cover;
   background-position: center;
   height: 300px;
 }
 
-.article-contents {
+.news-list-box .article-contents {
   width: 60%;
   padding: 15px;
   display: flex;
@@ -35,32 +31,36 @@
   justify-content: center;
 }
 
-.article-contents > div {
-  margin-bottom: 5px;
-}
-
-.article-contents > div:first-child {
+.news-list-box .article-title {
+  -webkit-line-clamp: 1;
   font-size: 18px;
   font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-.article-contents > div:last-child {
-  margin-top: 40px;
-  height: 3em;
+.news-list-box .article-description {
+  -webkit-line-clamp: 3;
+  display: -webkit-box !important;
+}
+
+.news-list-box .article-author {
   line-height: 1.5em;
   font-size: 14px;
   color: #666;
+  margin-top: 1rem;
 }
+
 li,
 ul {
   list-style: none;
 }
+
 h3,
 p {
   color: #000;
 }
 
-.article-layout {
+.news-list-box .article-layout {
   display: flex;
   width: 80%;
   height: 100%;
@@ -73,11 +73,11 @@ p {
   box-shadow: 3px 3px 3px darkgray;
 }
 
-.article-layout:hover {
+.news-list-box .article-layout:hover {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-.article-image {
+.news-list-box .article-image {
   flex-basis: 50%;
   display: flex;
   justify-content: center;
@@ -85,19 +85,17 @@ p {
   border-right: 1px solid rgba(169, 169, 169, 0.5);
 }
 
-.article-image img {
+.news-list-box .article-image img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.article-content {
+.news-list-box .article-content {
   flex-basis: 50%;
   padding: 20px;
 }
-.news-list-total {
-  margin-bottom: 50px;
-}
+
 .category-page-container {
   display: flex;
   flex-direction: column;
@@ -128,7 +126,6 @@ p {
   background-color: #fff;
   border: 1px solid #ddd;
   margin-bottom: 20px;
-  transition: box-shadow 0.3s ease-in-out;
 }
 
 .article:hover {
@@ -149,9 +146,11 @@ p {
   flex-direction: column;
   justify-content: start;
 }
+
 .news-title {
   color: #000;
 }
+
 .article h3 {
   color: #333;
   margin: 0 0 10px 0;
@@ -162,16 +161,23 @@ p {
   margin: 0;
 }
 
+.news-list-box {
+  margin: 0;
+  padding: 0;
+}
+
 .news-list-box .article-contents {
   color: #000;
   padding-right: 20px;
 }
+
 .plus-button-box {
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   text-align: center;
 }
+
 .plus-button {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   border: none;
   outline: none;
   background-color: inherit;
@@ -183,69 +189,27 @@ p {
   background-color: none;
   transition: 0.5s;
 }
+
 .whole {
   margin-top: 30px;
   text-align: center;
 }
-@media (min-width: 374px) and (max-width: 780px) {
-  .news-title {
-    color: #000;
-}
-  .news-list-total {
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px 0;
+
+@media (max-width: 767px) {
+  .news-list-box .newscard-area {
+    flex-direction: column;
   }
 
-  .newscard-area {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0px;
-    margin-left: -20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    background-color: #fff;
-    border: 0.2px solid darkgray;
-    box-shadow: 3px 3px 3px darkgray;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-
-  .news-card {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid gray;
-    width: 80%;
+  .news-list-box .news-card {
+    width: 100%;
     background-size: cover;
     background-position: center;
-    height: 200px;
+    height: 0;
+    padding-bottom: 60%;
   }
 
-  .article-contents {
-    overflow: hidden;
-  text-overflow: ellipsis;
-  width: 80%; 
-  text-align: center;
-
-  }
-
-  .whole {
-    margin-top: 20px;
-  }
-  .article-contents > div {
-    margin-bottom: 5px;
-  }
-
-  .article-contents > div:first-child {
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-  .article-contents > div:last-child {
-    
-  }
-  li,
-  ul {
-    list-style: none;
+  .news-list-box .article-contents {
+    width: 100%;
+    padding: 2rem;
   }
 }
