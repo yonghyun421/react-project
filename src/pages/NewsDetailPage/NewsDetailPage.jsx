@@ -1,40 +1,41 @@
-import React from "react";
-import { Alert } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { useNewsListQuery } from "../../hooks/useNews";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import "./NewsDetailPage.style.css";
 
-const NewsDetailPage = () => {
-  const { id } = useParams();
-  const { data: news, isLoading, isError, error } = useNewsListQuery();
-  // eslint-disable-next-line
-  console.log(news);
-  const extractNumber = url => {
-    const numericPart = url.replace(/\D/g, "");
-    return Number.isNaN(Number(numericPart)) ? null : Number(numericPart);
-  };
-
-  const newsDetail = news?.articles.filter(
-    article => extractNumber(article.url) === parseInt(id, 10),
-  );
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <Alert variant="danger">{error.message}</Alert>;
-  }
+function NewsDetailPage() {
+  const { state } = useLocation();
+  const { articleData } = state;
+  const dateString = articleData.publishedAt;
+  const date = new Date(dateString);
+  const formattedDate = date
+    ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")} ${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`
+    : "";
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    window.scrollTo(0, 0); // 페이지 진입 시 스크롤 위치를 최상단으로 이동
+  }, []);
   /* eslint-disable react/no-danger */
   return (
-    <div>
-      {newsDetail.map(article => (
-        <div key={article.url}>
-          <div>{article.title}</div>
-          <div dangerouslySetInnerHTML={{ __html: article.description }} />
-        </div>
-      ))}
+    <div className="newsDetail--wrap">
+      <div className="newsDetail--titleWrap">
+        <div className="newsDetail--title">{articleData.title}</div>
+        {articleData.publishedAt && (
+          <div className="newsDetail--date">{formattedDate}</div>
+        )}
+      </div>
+      <div className="newsDetail--img">
+        <img src={articleData.urlToImage} alt="newsImg" />
+      </div>
+      <div className="newsDetail--con">
+        <div dangerouslySetInnerHTML={{ __html: articleData.description }} />
+      </div>
+      {articleData.author && (
+        <div className="newsDetail--author">{articleData.author}</div>
+      )}
+      <div className="newsDetail--news">{articleData.source.name}</div>
     </div>
   );
   /* eslint-disable react/no-danger */
-};
+}
 
 export default NewsDetailPage;

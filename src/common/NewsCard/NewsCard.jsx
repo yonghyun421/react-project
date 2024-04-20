@@ -1,33 +1,60 @@
 import React from "react";
+import PropTypes from "prop-types";
+import "./NewsCard.style.css";
 import { useNavigate } from "react-router-dom";
 
-const NewsCard = ({ news }) => {
+function NewsCard({ articles }) {
   const navigate = useNavigate();
   const extractNumber = url => {
-    const numericPart = url.replace(/\D/g, "");
-    return Number.isNaN(Number(numericPart)) ? null : Number(numericPart);
+    if (!url) return null;
+    const numericPart = url.match(/\d+/g);
+    if (numericPart) {
+      const numericString = numericPart.join("");
+      return Number(numericString.substr(0, 15));
+    }
+    return null;
   };
 
   const newsDetailPage = () => {
-    const newsId = extractNumber(news?.url);
-    navigate(`/news/${newsId}`);
+    const newsId = extractNumber(articles ? articles.url : null);
+    navigate(`/news/${newsId}`, { state: { articleData: articles } });
   };
 
   return (
     <div
-      className=""
-      onClick={() => newsDetailPage(news?.url)}
+      className="newscard-area"
+      onClick={newsDetailPage}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {
-          newsDetailPage(news?.url);
+          newsDetailPage();
         }
       }}
       role="button"
       tabIndex={0}>
-      <div>{news?.title}</div>
-      <div>{news?.author}</div>
+      <div
+        className="news-card"
+        style={{
+          backgroundImage: `url(${articles.urlToImage ? articles.urlToImage : "/nodata.png"})`,
+        }}
+        //   onClick={() => navigate(`/movies/${articles.id}`)}
+      >
+        <div className="overlay p-2" />
+      </div>
+      <div className="article-contents">
+        <div>{articles.title}</div>
+        <div>{articles.author}</div>
+      </div>
     </div>
   );
+}
+
+NewsCard.propTypes = {
+  articles: PropTypes.shape({
+    url: PropTypes.string,
+    urlToImage: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+  }).isRequired,
 };
 
 export default NewsCard;

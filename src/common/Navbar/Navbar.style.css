@@ -1,0 +1,22 @@
+.top-navbar {
+    margin-bottom: 30px;
+}
+
+.navbar-container {
+    width: 100%;
+    height: 56px;
+    background-color: #fff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    z-index: 9999;
+}
+
+.navbar-nav {
+    gap: 1.2rem;
+}
+
+.categories-list:hover {
+    color: #000;
+    font-weight: 600;
+}
