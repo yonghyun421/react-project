@@ -35,17 +35,27 @@ function Mypage() {
         <div className="profile--like">
           <p className="profile--like__title">관심분야 설정</p>
           <ul className="profile--like__list">
-            {NEWS_CATEGORY.map(category => (
-              <li key={category.value}>
-                <input
-                  type="checkbox"
-                  id={category.value}
-                  name="interest"
-                  defaultChecked={interestList.some(interest => interest.value === category.value)}
-                />
-                <label htmlFor={category.value}>{category.categoryName}</label>
-              </li>
-            ))}
+            {NEWS_CATEGORY.map(category => {
+              const isChecked =
+                Array.isArray(interestList) &&
+                interestList.some(
+                  interest => interest.value === category.value,
+                );
+
+              return (
+                <li key={category.value}>
+                  <input
+                    type="checkbox"
+                    id={category.value}
+                    name="interest"
+                    defaultChecked={isChecked}
+                  />
+                  <label htmlFor={category.value}>
+                    {category.categoryName}
+                  </label>
+                </li>
+              );
+            })}
           </ul>
           <button type="button" className="profile--btn">
             저장
