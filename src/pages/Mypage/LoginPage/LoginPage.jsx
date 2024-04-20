@@ -127,7 +127,7 @@ function LoginPage() {
         <button
           type="button"
           className="link"
-          onClick={() => navigate("/mypage/join")}>
+          onClick={() => navigate("/join")}>
           회원가입
         </button>
       </div>
