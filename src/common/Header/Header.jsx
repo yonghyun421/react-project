@@ -32,7 +32,7 @@ function Header() {
       </div>
       <div className="util--Btn">
         <div className="mypage--btn">
-          <Link as={Link} to="/" className="text-white">
+          <Link as={Link} to="/mypage/login" className="text-white">
             로그인
           </Link>
           <Link as={Link} to="/movies" className="text-white">
