@@ -28,7 +28,9 @@ function Header() {
         <MenuIcon />
       </div>
       <div className="logo">
-        <Link to="/">NewsTab</Link>
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          NewsTab
+        </Link>
       </div>
       <div className="util--Btn">
         <div className="mypage--btn">
