@@ -25,6 +25,10 @@ function App() {
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="news">
             <Route index element={<NewsPage />} />
+<<<<<<< HEAD
+=======
+            <Route path="category/:category" element={<NewsPage />} />
+>>>>>>> 49f6647 (작업진행중)
             <Route path=":id" element={<NewsDetailPage />} />
           </Route>
           <Route path="mypage">
