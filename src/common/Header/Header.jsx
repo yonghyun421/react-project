@@ -54,7 +54,9 @@ function Header() {
             <SearchIcon />
           </div>
           <Form
-            className={`d-flex search--box ${isSearchBoxVisible ? "" : "hidden"}`}
+            className={`d-flex search--box ${
+              isSearchBoxVisible ? "" : "hidden"
+            }`}
             onSubmit={searchByKeyword}>
             <Form.Control
               type="search"
