@@ -19,7 +19,6 @@ const Header = forwardRef((props, ref) => {
 
   const searchByKeyword = event => {
     event.preventDefault();
-    console.log("키워드", keyword);
     navigate(`/news?q=${keyword}`);
     setKeyword("");
   };

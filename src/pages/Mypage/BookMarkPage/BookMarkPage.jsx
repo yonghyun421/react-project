@@ -11,9 +11,7 @@ function BookMarkPage() {
   const interestList = useSelector(state => state.auth.interestList);
 
   const newsList = [...bookmarkList];
-  useEffect(() => {
-    console.log("bookmarkList:", bookmarkList);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="bookMarkPage--wrap">
@@ -34,6 +32,7 @@ function BookMarkPage() {
                   <p className="bookMarkPage--name">{news.title}</p>
                   <p className="bookMarkPage--cont">
                     <div
+                      // eslint-disable-next-line react/no-danger
                       dangerouslySetInnerHTML={{ __html: news.description }}
                     />
                   </p>

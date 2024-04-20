@@ -36,8 +36,6 @@ function NewsPage() {
     : useNewsListQuery({ category });
   const newsList = data && data.pages.flatMap(page => page.articles);
 
-  console.log("newslist:", newsList);
-
   if (isLoading) return <LoadingSpinner />;
 
   if (isError) {
