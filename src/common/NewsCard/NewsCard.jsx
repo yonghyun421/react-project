@@ -30,7 +30,7 @@ function NewsCard({ articles }) {
       role="button"
       tabIndex={0}>
       <div
-        className="movie-card"
+        className="news-card"
         style={{ backgroundImage: `url(${articles.urlToImage})` }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >
