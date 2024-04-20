@@ -1,10 +1,12 @@
 import React from "react";
 import "./Mypage.style.css";
+import { Link } from "react-router-dom";
 import noImage from "../../assets/noImage.jpg";
 
 function Mypage() {
   return (
     <div className="myPage--wrap">
+      <h2>마이페이지</h2>
       <div className="myPage--box">
         <div className="profile--wrap">
           <div className="profile--img">
@@ -14,12 +16,10 @@ function Mypage() {
             <p className="profile--info__id">react20242</p>
             <ul className="profile--info__bookmark">
               <li>
-                뉴스
-                <span>13</span>
-              </li>
-              <li>
-                언론사
-                <span>7</span>
+                <Link to="/mypage/bookmark">
+                  뉴스
+                  <span>13</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -33,7 +33,7 @@ function Mypage() {
             </li>
             <li>
               <input type="checkbox" id="entertainment" name="interest" />
-              <label htmlFor="entertainment">엔터테인먼트</label>
+              <label htmlFor="entertainment">연애</label>
             </li>
             <li>
               <input type="checkbox" id="general" name="interest" />
@@ -52,9 +52,14 @@ function Mypage() {
               <label htmlFor="sports">스포츠</label>
             </li>
           </ul>
-          <button type="button">저장</button>
+          <button type="button" className="profile--btn">
+            저장
+          </button>
         </div>
       </div>
+      <p className="member_delete">
+        <Link to="/">회원탈퇴</Link>
+      </p>
     </div>
   );
 }
