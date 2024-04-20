@@ -24,7 +24,7 @@ const categoryNames = {
   technology: "기술",
 };
 
-const NavigationBar = () => {
+function NavigationBar() {
   return (
     <div className="navbar-container">
       <Navbar
@@ -35,13 +35,15 @@ const NavigationBar = () => {
         className="top-navbar">
         <Container>
           <Nav className="flex-row">
+            {/* eslint-disable react/no-array-index-key */}
             {categories.map((category, index) => (
               <Nav.Item key={index} className="list-contain">
                 <Nav.Link
                   as={NavLink}
-                  to={`/category/${category}`}
-                  activeClassName="active"
-                  className="categories-list">
+                  to={`/news/category/${category}`}
+                  className={({ isActive }) =>
+                    `categories-list ${isActive ? "active-link" : ""}`
+                  }>
                   {categoryNames[category]}
                 </Nav.Link>
               </Nav.Item>
@@ -51,6 +53,6 @@ const NavigationBar = () => {
       </Navbar>
     </div>
   );
-};
+}
 
 export default NavigationBar;
