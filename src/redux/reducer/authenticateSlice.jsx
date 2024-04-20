@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   id: "",
   password: "",
-  bookmarkList: [],
-  interestList: [],
+  bookmarkList: null,
+  interestList: null,
   authenticate: false,
 };
 
@@ -30,9 +30,9 @@ const authenticateSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.password = "";
       // eslint-disable-next-line no-param-reassign
-      state.bookmarkList = [];
+      state.bookmarkList = null;
       // eslint-disable-next-line no-param-reassign
-      state.interestList = [];
+      state.interestList = null;
       // eslint-disable-next-line no-param-reassign
       state.authenticate = false;
     },
