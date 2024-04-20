@@ -1,0 +1,17 @@
+.youtubebox-area {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  margin-bottom: 10px;
+  color: black;
+  border-radius: 20px;
+}
+
+.youtubeb-box-list {
+  padding: 0 20px;
+}
+
+.youtubebox-area iframe {
+  width: 100%;
+  height: auto;
+}

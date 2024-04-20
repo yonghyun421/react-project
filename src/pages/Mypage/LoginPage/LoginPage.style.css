@@ -1,0 +1,65 @@
+.input--box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+.input--box .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 40px;
+  margin: 20px 30px;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #ffefa2;
+}
+.input--box .input--area {
+  width: 100%;
+}
+.input--box .link {
+  margin-top: 12px;
+  padding: 0;
+  border: 0 none;
+  background: none;
+}
+.input--box .link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.custom--button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 8px;
+  background-color: #ffd600;
+  border: 0 none;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.custom--button:hover {
+  background-color: #f7d10f;
+}

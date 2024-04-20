@@ -1,0 +1,32 @@
+.weatherbox-area {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 10px;
+  color: black;
+  border-radius: 20px;
+  position: relative;
+}
+
+.weateherbox-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.weather-description-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 40px;
+}
+
+.weather-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}

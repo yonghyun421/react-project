@@ -1,0 +1,104 @@
+.Homepage-area {
+  width: 100%;
+  padding: 1rem 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Homepage-area h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 1.2rem 0 0.5rem;
+}
+
+.Homepage-area .news-card {
+  height: 0;
+  padding-bottom: 73%;
+  border-radius: 14px;
+}
+
+.Homepage-area .carousel-indicators {
+  bottom: 60px;
+}
+
+.Homepage-area .carousel-control-next,
+.Homepage-area .carousel-control-prev {
+  height: calc(100% - 60px);
+}
+
+.Home-title {
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-top: 5px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.slide-area,
+.country-area {
+  width: 35%;
+  flex: 0 0 35%;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.weather-area {
+  width: 30%;
+  flex: 1 1 auto
+}
+
+.Homepage-area .row {
+  margin: 0;
+}
+
+.mainNews--list {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.favorite-area {
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.favorite-news {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.refresh-button {
+  width: 100%;
+  height: 100px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .favorite-news {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .mainNews--list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-area,
+  .country-area,
+  .weather-area {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}

@@ -1,0 +1,49 @@
+.input--area {
+  margin: 4px 0;
+}
+.input--area input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+}
+.input--area input:focus {
+  border-color: #616161;
+}
+.input--area input::placeholder {
+  color: #b9b9b9;
+}
+.input--area .invalid--text {
+  font-size: 12px;
+  color: #f85d5d;
+}
+/*눈알 위치 옮기기*/
+.input--area {
+  position: relative;
+  display: flex;
+  align-items: center; 
+}
+
+input[type="password"] {
+  flex-grow: 1; 
+  padding-right: 40px;
+}
+
+.toggle-visibility {
+  position: absolute;
+  right: 10px; 
+  border: none; 
+  background: none;
+  cursor: pointer; 
+}
+
+.invalid--text {
+  color: red; 
+  margin-left: 5px; 
+}

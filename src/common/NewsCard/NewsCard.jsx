@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./NewsCard.style.css";
 import { useNavigate } from "react-router-dom";
-/* eslint-disable react/prop-types */
+
 function NewsCard({ articles }) {
   const navigate = useNavigate();
   const extractNumber = url => {
+    if (!url) return null;
     const numericPart = url.match(/\d+/g);
     if (numericPart) {
       const numericString = numericPart.join("");
@@ -14,34 +16,47 @@ function NewsCard({ articles }) {
   };
 
   const newsDetailPage = () => {
-    const newsId = extractNumber(articles?.url);
-    navigate(`/news/${newsId}`);
+    const newsId = extractNumber(articles ? articles.url : null);
+    navigate(`/news/${newsId}`, { state: { articleData: articles } });
   };
 
   return (
     <div
-      className=""
-      onClick={() => newsDetailPage(articles?.url)}
+      className="newscard-area"
+      onClick={newsDetailPage}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {
-          newsDetailPage(articles?.url);
+          newsDetailPage();
         }
       }}
       role="button"
       tabIndex={0}>
       <div
-        className="movie-card"
-        style={{ backgroundImage: `url(${articles.urlToImage})` }}
+        className="news-card"
+        style={{
+          backgroundImage: `url(${articles.urlToImage ? articles.urlToImage : "/nodata.png"})`,
+        }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >
         <div className="overlay p-2" />
       </div>
       <div className="article-contents">
-        <div>{articles.title}</div>
-        <div>{articles.author}</div>
+        <div className="article-title">{articles?.title}</div>
+        <div className="article-description">{articles?.description}</div>
+        <div className="article-author">{articles?.author}</div>
       </div>
     </div>
   );
 }
+
+NewsCard.propTypes = {
+  articles: PropTypes.shape({
+    url: PropTypes.string,
+    urlToImage: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    author: PropTypes.string,
+  }).isRequired,
+};
 
 export default NewsCard;

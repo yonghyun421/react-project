@@ -1,13 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Alert } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useCategoryNews } from "../../../../hooks/useCategoryNews";
+import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
 
-const CategoryNewsSlide = ({ category }) => {
+function CategoryNewsSlide({ category }) {
   const { data, isError, isLoading, error } = useCategoryNews(category);
+  const navigate = useNavigate();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <Alert variant="danger">{error.message}</Alert>;
+  if (isLoading) return <LoadingSpinner />;
+  if (isError) {
+    navigate("/error");
+    return <Alert variant="danger">{error.message}</Alert>;
+  }
+
   return (
     <div>
       <NewsSlider
@@ -17,6 +25,10 @@ const CategoryNewsSlide = ({ category }) => {
       />
     </div>
   );
+}
+
+CategoryNewsSlide.propTypes = {
+  category: PropTypes.string.isRequired,
 };
 
 export default CategoryNewsSlide;
