@@ -15,7 +15,7 @@ const Header = forwardRef((props, ref) => {
   const [keyword, setKeyword] = useState("");
   const [isSearchBoxVisible, setIsSearchBoxVisible] = useState(false);
   const navigate = useNavigate();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMenuIconVisible, setIsMenuIconVisible] = useState(false);
 
   const searchByKeyword = event => {
     event.preventDefault();
@@ -26,6 +26,9 @@ const Header = forwardRef((props, ref) => {
 
   const handleSearchIconClick = () => {
     setIsSearchBoxVisible(true);
+  };
+  const handleMenuIconClick = () => {
+    setIsMenuIconVisible(!isMenuIconVisible);
   };
 
   const loginout = () => {
@@ -42,9 +45,14 @@ const Header = forwardRef((props, ref) => {
 
   return (
     <div className="header" ref={ref}>
-      <div className="menu--btn">
+      <button
+        type="button"
+        tabIndex={0}
+        onClick={handleMenuIconClick}
+        className="menu--icon menu--btn"
+        aria-label="menuIcon">
         <MenuIcon />
-      </div>
+      </button>
       <div className="logo">
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           NewsTab
@@ -76,56 +84,26 @@ const Header = forwardRef((props, ref) => {
             검색
             <SearchIcon />
           </div>
-        </div>
-        <div className="logo">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            NewsTab
-          </Link>
-        </div>
-        <div className="util--Btn">
-          <div className="mypage--btn">
-            <Link as={Link} to="/mypage/login" className="text-white">
-              로그인
-            </Link>
-            <Link as={Link} to="/movies" className="text-white">
-              마이페이지
-            </Link>
-          </div>
-          <div className="search--btn">
-            <div
-              role="button"
-              tabIndex={0}
-              onClick={handleSearchIconClick}
-              className={`search--icon ${isSearchBoxVisible ? "hidden" : ""}`}
-              onKeyPress={e => {
-                if (e.key === "Enter") {
-                  handleSearchIconClick();
-                }
-              }}>
-              검색
+          <Form
+            className={`d-flex search--box ${
+              isSearchBoxVisible ? "" : "hidden"
+            }`}
+            onSubmit={searchByKeyword}>
+            <Form.Control
+              type="search"
+              placeholder="SEARCH"
+              className="me-2"
+              aria-label="Search"
+              value={keyword}
+              onChange={event => setKeyword(event.target.value)}
+            />
+            <Button type="submit">
               <SearchIcon />
-            </div>
-            <Form
-              className={`d-flex search--box ${
-                isSearchBoxVisible ? "" : "hidden"
-              }`}
-              onSubmit={searchByKeyword}>
-              <Form.Control
-                type="search"
-                placeholder="SEARCH"
-                className="me-2"
-                aria-label="Search"
-                value={keyword}
-                onChange={event => setKeyword(event.target.value)}
-              />
-              <Button type="submit">
-                <SearchIcon />
-              </Button>
-            </Form>
-          </div>
+            </Button>
+          </Form>
         </div>
       </div>
-      <NavigationBar isSidebarOpen={isSidebarOpen} />
+      <NavigationBar isMenuIconVisible={isMenuIconVisible} />
     </div>
   );
 });
