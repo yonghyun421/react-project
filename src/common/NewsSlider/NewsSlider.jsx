@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "./NewsSlider.style.css";
 import "react-multi-carousel/lib/styles.css";
-import Carousel from "react-bootstrap/Carousel";
 // import { responsive } from "../../constants/responsive";
 import NewsCard from "../NewsCard/NewsCard";
 

@@ -34,7 +34,7 @@ function NewsPage() {
     : useNewsListQuery({ category });
   // eslint-disable-next-line
   console.log(data);
-  const newsList = data?.pages.flatMap(page => page.articles);
+  const newsList = data && data.pages.flatMap(page => page.articles);
 
   if (isLoading) {
     return <div>Loading...</div>;

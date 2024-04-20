@@ -4,7 +4,6 @@ import { Alert } from "react-bootstrap";
 import NewsSlider from "../../../../common/NewsSlider/NewsSlider";
 import { useMediaCompanyNews } from "../../../../hooks/useMediaCompanyNews";
 
-// eslint-disable-next-line react/prop-types
 function MediaCompanySlide({ country }) {
   const { data, isError, isLoading, error } = useMediaCompanyNews(country);
 
@@ -22,7 +21,7 @@ function MediaCompanySlide({ country }) {
 }
 
 MediaCompanySlide.propTypes = {
-  company: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
 };
 
 export default MediaCompanySlide;
