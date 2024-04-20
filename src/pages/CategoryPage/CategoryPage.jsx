@@ -22,6 +22,7 @@ const CategoryPage = () => {
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
+    setArticles([]); // 카테고리가 변경될 때 기사 목록 초기화
     const fetchArticles = async () => {
       setLoading(true);
       const API_KEY = process.env.REACT_APP_KEY;
@@ -50,15 +51,20 @@ const CategoryPage = () => {
       <h2>{categoryNames[category] || category} 뉴스</h2>
       <ul className="articles-list">
         {articles.map((article, index) => (
-          <li key={index} className="article">
+          <li key={article.id || index} className="article"> 
             <img src={article.urlToImage} alt={article.title} />
             <div className="article-content">
+              
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
               <a
                 href={article.url}
                 target="_blank"
-                rel="noopener noreferrer"></a>
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
+                rel="noopener noreferrer"
+                className="news-dierect-link"
+              >
+                {article.title} 
+              </a>
             </div>
           </li>
         ))}
@@ -68,7 +74,7 @@ const CategoryPage = () => {
           기사 더보기 <FaChevronDown />
         </button>
       )}
-      {loading && <p>로딩 중...</p>}
+      {loading && <div>로딩 중...</div>} 
     </div>
   );
 };
