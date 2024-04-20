@@ -9,13 +9,12 @@ function LoginPage() {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [errorType, setErrorType] = useState(null);
   const [loginError, setLoginError] = useState(false);
 
-  // errorType
-  // 0: 입력 안됨
-  // 1: 존재하지 않는 아이디
-  // 2: 비밀번호 오류
+  const [errorMessages, setErrorMessages] = useState({
+    userIdInvalidText: "",
+    userPasswordInvalidText: "",
+  });
 
   const handleLogin = async event => {
     event.preventDefault();
@@ -30,9 +29,11 @@ function LoginPage() {
 
       if (userIdquerySnapshot.empty) {
         // 아이디 없음
-        setErrorType(1);
+        setErrorMessages({
+          userIdInvalidText: "존재하지 않는 아이디입니다.",
+          userPasswordInvalidText: "",
+        });
       } else {
-        // navigate("/mypage");
         // 아이디 있음
         const userQuery = query(
           collection(db, "USER"),
@@ -43,8 +44,11 @@ function LoginPage() {
 
         if (querySnapshot.empty) {
           // 비밀번호까지 일치하는 회원정보 없음
-          setErrorType(2);
           setLoginError(true);
+          setErrorMessages({
+            userIdInvalidText: "",
+            userPasswordInvalidText: "비밀번호가 틀렸습니다.",
+          });
         } else {
           // 비밀번호 일치함
           setLoginError(false);
@@ -52,13 +56,12 @@ function LoginPage() {
         }
       }
     } else {
-      setErrorType(0);
+      setErrorMessages({
+        userIdInvalidText: "아이디를 입력해주세요.",
+        userPasswordInvalidText: "비밀번호를 입력해주세요.",
+      });
     }
   };
-
-  useEffect(() => {
-    console.log(errorType);
-  }, [errorType]);
 
   return (
     <div className="inner">
@@ -68,11 +71,7 @@ function LoginPage() {
           placeholder="아이디"
           value={userId}
           invalid={loginError}
-          invalidText={
-            errorType === 0
-              ? "아이디와 비밀번호를 입력해주세요."
-              : "존재하지 않는 아이디입니다."
-          }
+          invalidText={errorMessages.userIdInvalidText}
           onChange={event => setUserId(event.target.value)}
         />
         <Input
@@ -80,13 +79,16 @@ function LoginPage() {
           value={password}
           invalid={loginError}
           placeholder="비밀번호"
-          invalidText="비밀번호가 틀렸습니다."
+          invalidText={errorMessages.userPasswordInvalidText}
           onChange={event => setPassword(event.target.value)}
         />
         <button type="button" className="custom--button" onClick={handleLogin}>
           로그인
         </button>
-        <button type="button" className="link">
+        <button
+          type="button"
+          className="link"
+          onClick={() => navigate("/mypage/join")}>
           회원가입
         </button>
       </div>
