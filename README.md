@@ -34,9 +34,10 @@ TBU
 
 TBU
 
-## 설치 밒 실행
+## 설치 및 실행
 
-TBU
+npm install
+npm start
 
 # 기술 스택
 

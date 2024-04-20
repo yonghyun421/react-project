@@ -46,6 +46,7 @@ function JoinPage() {
 
     // 입력 유효성 검사
     if (!userIdIsValid || !passwordIsValid || !passwordsMatch) {
+      // eslint-disable-next-line no-console
       console.error("입력 조건을 만족하지 않습니다.");
       return;
     }
@@ -59,6 +60,7 @@ function JoinPage() {
       // eslint-disable-next-line
       alert("회원가입이 완료되었습니다!");
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error("Error adding document: ", error);
     }
   };
