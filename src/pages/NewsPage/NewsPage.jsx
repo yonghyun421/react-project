@@ -34,7 +34,7 @@ function NewsPage() {
     : useNewsListQuery({ category });
   // eslint-disable-next-line
   console.log(data);
-  const newsList = data?.pages.flatMap(page => page.articles);
+  const newsList = data && data.pages.flatMap(page => page.articles);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -52,11 +52,13 @@ function NewsPage() {
     <div>
       <h2>{keyword ? "검색" : categoryNames[category] || category} 뉴스</h2>
       <ul className="news-list-box">
-        {newsList?.map(news => (
-          <li key={news?.url}>
-            <NewsCard articles={news} />
-          </li>
-        ))}
+        {newsList &&
+          newsList.map(news => (
+            <li key={news.id || news.url}>
+              {" "}
+              <NewsCard articles={news} />
+            </li>
+          ))}
       </ul>
       {hasNextPage && !isFetchingNextPage && (
         <button onClick={handleLoadMore} className="plus-button" type="button">

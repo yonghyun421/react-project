@@ -7,6 +7,7 @@ const fetchLatestNews = async () => {
   const response = await api.get(`/top-headlines?country=kr&apiKey=${API_KEY}`);
   return response.data;
 };
+// sources=bbc-news
 
 // sources=bbc-news
 // eslint-disable-next-line

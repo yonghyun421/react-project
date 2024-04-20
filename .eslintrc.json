@@ -12,6 +12,8 @@
         },
         "allowChildren": false
       }
-    ]
+    ],
+    "react/no-array-index-key": "off",
+    "no-unused-vars": "off"
   }
 }
