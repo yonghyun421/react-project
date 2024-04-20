@@ -31,7 +31,9 @@ function NewsCard({ articles }) {
       tabIndex={0}>
       <div
         className="news-card"
-        style={{ backgroundImage: `url(${articles.urlToImage})` }}
+        style={{
+          backgroundImage: `url(${articles.urlToImage ? articles.urlToImage : "../../../public/nodata.png"})`,
+        }}
         //   onClick={() => navigate(`/movies/${articles.id}`)}
       >
         <div className="overlay p-2" />

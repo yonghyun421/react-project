@@ -43,7 +43,7 @@
 .favorite-news {
   display: flex;
   justify-content: space-evenly;
-  overflow: scroll;
+  overflow-x: scroll;
 
   .slider-container {
     width: 380px;
@@ -65,4 +65,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 767px) {
+  .favorite-news {
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+
+    div {
+      /* width: 400px; */
+    }
+
+    .slider-container {
+      width: 400px;
+
+      .news-card {
+        width: 400px;
+        height: 200px;
+      }
+
+      .article-contents {
+        width: 300px;
+      }
+    }
+  }
 }
