@@ -12,11 +12,11 @@ const categories = [
   "health",
   "science",
   "sports",
-  "technology ",
+  "technology", // 여기 공백을 제거했습니다.
 ];
 const categoryNames = {
   business: "경제",
-  entertainment: "엔터테인먼트",
+  entertainment: "연예",
   general: "일반",
   health: "건강",
   science: "과학",
@@ -42,7 +42,8 @@ function NavigationBar() {
                   as={NavLink}
                   to={`/news/category/${category}`}
                   className={({ isActive }) =>
-                    `categories-list ${isActive ? "active-link" : ""}`
+                    `cate
+                    gories-list ${isActive ? "active-link" : ""}`
                   }>
                   {categoryNames[category]}
                 </Nav.Link>
