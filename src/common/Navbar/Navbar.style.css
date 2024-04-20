@@ -69,3 +69,76 @@ html {
   width: 100%;
   left: 0;
 }
+@media (min-width: 374px) and (max-width: 780px) {
+  .top-navbar {
+    margin-bottom: 15px;
+  }
+  
+  .navbar-container {
+    width: 100%;
+    height: 56px;
+    background-color: #000000;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    z-index: 9999;
+  }
+  
+  .navbar-nav {
+  }
+  
+  body,
+  html {
+    margin: 0;
+    font:
+      bold 14px/1.4 "Open Sans",
+      arial,
+      sans-serif;
+    background: #000;
+  }
+  
+  .navbar-container .navbar-nav {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .navbar-container .navbar-nav .nav-item {
+    display: block;
+    position: relative;
+    padding: 15px 0;
+  }
+  
+  .navbar-container .navbar-nav .nav-link {
+    color: #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.10em;
+    display: inline-block;
+    padding: 5px 10px;
+    position: relative;
+  }
+  
+  .navbar-container .navbar-nav .nav-link:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #82d8ff;
+    transition:
+      width 0.3s ease 0s,
+      left 0.3s ease 0s;
+    width: 0;
+  }
+  
+  .navbar-container .navbar-nav .nav-link:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}
