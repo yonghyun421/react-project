@@ -26,7 +26,7 @@ function YoutubeBox() {
   }
 
   return (
-    <div className="youtubebox-area">
+    <div className="youtubebox-area box-shadow">
       <div className="conatiner">
         <div className="area-title">유투브 최신 영상</div>
         <div className="youtubeb-box-list">

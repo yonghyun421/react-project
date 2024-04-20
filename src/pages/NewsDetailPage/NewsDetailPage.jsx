@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
 import "./NewsDetailPage.style.css";
 
 function NewsDetailPage() {
   const { state } = useLocation();
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  useEffect(() => {
+    if (state && state.articleData) {
+      setIsLoading(false);
+      // eslint-disable-next-line no-undef
+      window.scrollTo(0, 0);
+      /* eslint-disable react/no-danger */
+    }
+  }, [state]);
+
+  if (isLoading) return <LoadingSpinner />;
+
   const { articleData } = state;
   const dateString = articleData.publishedAt;
   const date = new Date(dateString);
   const formattedDate = date
     ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")} ${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`
     : "";
-  useEffect(() => {
-    // eslint-disable-next-line no-undef
-    window.scrollTo(0, 0); // 페이지 진입 시 스크롤 위치를 최상단으로 이동
-  }, []);
-  /* eslint-disable react/no-danger */
+
   return (
     <div className="newsDetail--wrap">
       <div className="newsDetail--titleWrap">
