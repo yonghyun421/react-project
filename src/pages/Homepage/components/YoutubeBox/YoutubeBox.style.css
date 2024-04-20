@@ -1,12 +1,16 @@
 .youtubebox-area {
   width: 100%;
-  height: 1600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   background-color: white;
+  margin-bottom: 10px;
   color: black;
   border-radius: 20px;
   box-shadow: 3px 3px 3px darkgray;
+}
+.youtubeb-box-list {
+  padding: 0 20px;
+}
+.youtubebox-area iframe {
+  width: 100%;
+  height: auto;
 }
