@@ -9,10 +9,10 @@ a {
   width: 100%;
   transition: 0.2s;
   border-bottom:2px solid rgb(105, 105, 253);
-  -webkit-transition:;
-  -moz-transition:;
-  -ms-transition:;
-  -o-transition:;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
 }
 
 .category-page-container {

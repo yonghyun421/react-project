@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import axios from "../../utils/api";
 import "./CategoryPage.style.css";
-import { FaChevronDown } from "react-icons/fa";
 
 const categoryNames = {
   business: "경제",
@@ -68,7 +68,7 @@ function CategoryPage() {
         ))}
       </ul>
       {hasMore && !loading && (
-        <button onClick={handleLoadMore} className="plus-button">
+        <button type="button" onClick={handleLoadMore} className="plus-button">
           기사 더보기 <FaChevronDown />
         </button>
       )}
