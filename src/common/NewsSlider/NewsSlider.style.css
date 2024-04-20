@@ -6,7 +6,7 @@
     height: 100%;
 
     a {
-      top: -150px;
+      top: -50px;
     }
   }
 }
@@ -27,6 +27,16 @@
 .carousel-control-prev-icon {
   background-color: black;
   color: black;
+}
+
+.slider-container {
+  .slide {
+    height: 60%;
+  }
+
+  .carousel-indicators {
+    color: black;
+  }
 }
 
 @media (max-width: 480px) {

@@ -26,7 +26,7 @@ function WeatherBox() {
   useEffect(() => {
     getCurrentLocation();
   }, []);
-  console.log("weather", weather);
+
   return (
     <div className="weatherbox-area">
       <div className="container">
