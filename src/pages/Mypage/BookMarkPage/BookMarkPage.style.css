@@ -1,0 +1,83 @@
+.bookMarkPage--wrap {
+  background: #fff;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.bookMarkPage--wrap img {
+  width: 100%;
+}
+
+.bookMarkPage--box {
+  max-width: 1000px;
+  width: calc(100% - 32px);
+  padding: 16px 16px 24px;
+}
+
+.bookMarkPage--title {
+  font-size: 1.1rem;
+  padding-bottom: 0.2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bookMarkPage--title span {
+  font-weight: 700;
+}
+
+.bookMarkPage--list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.bookMarkPage--list li {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+
+.bookMarkPage--thumb {
+  width: 100px;
+  flex: 0 0 100px;
+}
+
+.bookMarkPage--contWrap {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.bookMarkPage--name,
+.bookMarkPage--cont {
+  white-space: normal;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  line-height: 1.38;
+  letter-spacing: -0.3px;
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.bookMarkPage--name {
+  -webkit-line-clamp: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.bookMarkPage--cont {
+  -webkit-line-clamp: 2;
+  font-size: 0.8rem;
+  margin: 0;
+}
