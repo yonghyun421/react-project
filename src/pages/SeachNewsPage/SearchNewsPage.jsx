@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useSearchNewsQuery } from "../../hooks/useSearchNews";
 import NewsCard from "../../common/NewsCard/NewsCard";
 import Header from "../../common/Header/Header";
+import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
 
 function SearchNewsPage() {
   const [query, setQuery] = useSearchParams();
@@ -54,10 +55,7 @@ function SearchNewsPage() {
     return newsList;
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
+  if (isLoading) return <LoadingSpinner />;
   if (isError) {
     return <Alert variant="danger">{error.message}</Alert>;
   }
