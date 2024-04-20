@@ -25,10 +25,34 @@
 .profile--wrap {
     display: flex;
     align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile--info p,
+.profile--info ul {
+    margin: 0;
+}
+
+.profile--info__bookmark {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
 }
 
 .profile--img {
     width: 90px;
     border-radius: 100%;
     overflow: hidden;
+}
+
+.profile--like__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 40px;
+    list-style: none;
+    padding: 0;
 }

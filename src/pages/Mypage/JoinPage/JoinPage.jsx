@@ -25,7 +25,8 @@ function JoinPage() {
       where("userId", "==", newUserId),
     );
     const querySnapshot = await getDocs(userQuery);
-    setUserIdIsValid(querySnapshot.empty); // 결과가 비어있다면, 유효한 ID
+    // 결과가 비어있다면, 유효한 ID
+    setUserIdIsValid(querySnapshot.empty);
   };
 
   const handlePasswordChange = event => {
@@ -46,7 +47,7 @@ function JoinPage() {
     // 입력 유효성 검사
     if (!userIdIsValid || !passwordIsValid || !passwordsMatch) {
       console.error("입력 조건을 만족하지 않습니다.");
-      return; // 조건을 만족하지 않을 때 함수를 빠져나갑니다.
+      return;
     }
 
     try {
@@ -55,6 +56,7 @@ function JoinPage() {
         userId,
         userPassword: password,
       });
+      // eslint-disable-next-line
       alert("회원가입이 완료되었습니다!");
     } catch (error) {
       console.error("Error adding document: ", error);
