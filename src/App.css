@@ -5,10 +5,22 @@
   background-color: #f7f7f7;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
 .wrap .inner {
   flex: 1;
 }
 
 body {
   background-color: lightgray !important;
+}
+
+.box-shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

@@ -28,7 +28,7 @@ function WeatherBox() {
   }, []);
 
   return (
-    <div className="weatherbox-area">
+    <div className="weatherbox-area box-shadow">
       <div className="container">
         <div className="weather-box">
           {weather ? (
