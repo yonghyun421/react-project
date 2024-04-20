@@ -29,7 +29,7 @@ function App() {
             path="mypage"
             element={<PrivateRoute isLogin={authenticate} />}
           />
-          <Route path="/mypage/bookmark" element={<BookMarkPage />} />
+          <Route path="/bookmark" element={<BookMarkPage />} />
           <Route path="join" element={<JoinPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="error" element={<TooManyRequestPage />} />
