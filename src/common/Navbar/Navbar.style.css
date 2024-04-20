@@ -1,18 +1,21 @@
 .top-navbar {
   margin-bottom: 30px;
 }
+
 .navbar-container {
   width: 150%;
-  height: 4vh;
+  height: 56px;
   background-color: #fff;
+  position: sticky;
+  top: 50px;
+  z-index: 9999;
 }
 
+.navbar-nav {
+  gap: 1.2rem;
+}
 
 .categories-list:hover {
-  transition: 0.2s;
   color: #000;
-  border-bottom: 2px solid rgb(105, 105, 253);
-  border-radius: 2px;
-  padding: 5px;
+  font-weight: 600;
 }
-

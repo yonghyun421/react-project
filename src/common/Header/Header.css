@@ -6,14 +6,16 @@
   align-items: center;
   -webkit-box-align: center;
   justify-content: center;
-  position: -webkit-sticky;
   position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
-.header .logo {
+.header .logo a {
   font-size: 1.4rem;
   font-weight: 700;
   color: #fff;
+  text-decoration: none;
 }
 
 .header .menu--btn,
