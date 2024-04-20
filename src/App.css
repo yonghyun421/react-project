@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 .wrap .inner {
   flex: 1;
+}
+body {
+  background-color: black !important;
+  color: white !important;
 }
