@@ -11,8 +11,8 @@ function Mypage() {
             <img src={noImage} alt="noImage" />
           </div>
           <div className="profile--info">
-            <p className="profile-info__id">react20242</p>
-            <ul>
+            <p className="profile--info__id">react20242</p>
+            <ul className="profile--info__bookmark">
               <li>
                 뉴스
                 <span>13</span>
@@ -24,16 +24,16 @@ function Mypage() {
             </ul>
           </div>
         </div>
-        <div className="">
-          <p className="">관심분야 설정</p>
-          <ul className="">
+        <div className="profile--like">
+          <p className="profile--like__title">관심분야 설정</p>
+          <ul className="profile--like__list">
             <li>
               <input type="checkbox" id="business" name="interest" />
               <label htmlFor="business">경제</label>
             </li>
             <li>
               <input type="checkbox" id="entertainment" name="interest" />
-              <label htmlFor="entertainment">연예</label>
+              <label htmlFor="entertainment">엔터테인먼트</label>
             </li>
             <li>
               <input type="checkbox" id="general" name="interest" />
@@ -50,10 +50,6 @@ function Mypage() {
             <li>
               <input type="checkbox" id="sports" name="interest" />
               <label htmlFor="sports">스포츠</label>
-            </li>
-            <li>
-              <input type="checkbox" id="technology" name="interest" />
-              <label htmlFor="technology">기술</label>
             </li>
           </ul>
           <button type="button">저장</button>

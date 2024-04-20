@@ -1,9 +1,10 @@
 import React from "react";
 import { Alert } from "react-bootstrap";
 import { FaChevronDown } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import NewsCard from "../../common/NewsCard/NewsCard";
 import { useNewsListQuery } from "../../hooks/useNews";
+import { useSearchNewsQuery } from "../../hooks/useSearchNews";
 
 const categoryNames = {
   business: "경제",
@@ -17,6 +18,9 @@ const categoryNames = {
 
 function NewsPage() {
   const { category } = useParams();
+  const [searchParams] = useSearchParams();
+  const keyword = searchParams.get("q");
+
   const {
     data,
     isLoading,
@@ -25,9 +29,12 @@ function NewsPage() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useNewsListQuery({ category });
-
-  const newsList = data && data.pages.flatMap(page => page.articles);
+  } = keyword
+    ? useSearchNewsQuery({ keyword })
+    : useNewsListQuery({ category });
+  // eslint-disable-next-line
+  console.log(data);
+  const newsList = data?.pages.flatMap(page => page.articles);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -43,7 +50,7 @@ function NewsPage() {
 
   return (
     <div>
-      <h2>{categoryNames[category] || category} 뉴스</h2>
+      <h2>{keyword ? "검색" : categoryNames[category] || category} 뉴스</h2>
       <ul className="news-list-box">
         {newsList &&
           newsList.map(news => (
