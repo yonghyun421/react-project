@@ -37,7 +37,12 @@ function Mypage() {
           <ul className="profile--like__list">
             {NEWS_CATEGORY.map((category) => (
               <li key={category.value}>
-                <input type="checkbox" id={category.value} name="interest" />
+                <input
+                  type="checkbox"
+                  id={category.value}
+                  name="interest"
+                  defaultChecked={interestList.some(interest => interest.value === category.value)}
+                />
                 <label htmlFor={category.value}>{category.categoryName}</label>
               </li>
             ))}
