@@ -4,10 +4,9 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
-import Carousel from "react-multi-carousel";
+import { Carousel } from "react-bootstrap";
 import "./NewsSlider.style.css";
 import "react-multi-carousel/lib/styles.css";
-// import { responsive } from "../../constants/responsive";
 import NewsCard from "../NewsCard/NewsCard";
 
 function NewsSlider({ title, articles }) {
