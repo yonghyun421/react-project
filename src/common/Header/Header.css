@@ -2,19 +2,29 @@
   background-color: var(--primary-color);
   width: 100%;
   height: 50px;
-  display: flex;
-  align-items: center;
-  -webkit-box-align: center;
-  justify-content: center;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 9999;
 }
 
+.header--box {
+  width: 100%;
+  max-width: 1000px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  -webkit-box-align: center;
+  justify-content: flex-start;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 .header .logo {
   height: 100%;
 }
+
 .header .logo button {
   height: 100%;
   padding: 8px 0;
@@ -23,6 +33,7 @@
   color: #fff;
   text-decoration: none;
 }
+
 .header .logo img {
   width: auto;
   height: 100%;
@@ -56,6 +67,7 @@
   align-items: center;
   -webkit-box-align: center;
   gap: 1.4rem;
+  font-size: 0.9rem;
 }
 
 .header .util--Btn a {
@@ -105,6 +117,12 @@
 }
 
 @media (max-width: 767px) {
+
+  .header--box {
+    -webkit-box-align: center;
+    justify-content: center;
+  }
+
   .header .menu--btn {
     display: block;
   }

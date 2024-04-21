@@ -7,12 +7,13 @@
 
 .footer * {
   box-sizing: border-box;
-  color: var(--gray-color)
+  color: var(--gray-color);
+  font-size: 0.9rem;
 }
 
 .foo-inner {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -33,4 +34,11 @@
 .foo--copy {
   font-size: 0.75rem;
   color: #666;
+}
+
+@media all and (max-width: 375px) {
+  .foo--list {
+    display: flex;
+    gap: 1rem;
+  }
 }

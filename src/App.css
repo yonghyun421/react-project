@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #070618;
+  --primary-color: #222;
   --secondary-color: #383E50;
   --point-color: #FFD600;
   --dark-point-color: #FFB800;
@@ -10,6 +10,7 @@
   --box-shadow: 4px 10px 30px 0px rgba(7, 6, 24, 0.25);
   --background-color: #f7f7f7;
 }
+
 .wrap {
   display: flex;
   flex-direction: column;
@@ -40,4 +41,9 @@ body {
 .logo img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.contain {
+  position: relative;
+  width: 100%;
 }

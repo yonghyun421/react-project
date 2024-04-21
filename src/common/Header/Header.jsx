@@ -42,68 +42,70 @@ const Header = forwardRef((props, ref) => {
   return (
     <>
       <div className="header" ref={ref}>
-        <button
-          type="button"
-          tabIndex={0}
-          onClick={handleMenuIconClick}
-          className="menu--icon menu--btn"
-          aria-label="menuIcon">
-          <MenuIcon />
-        </button>
-        <div className="logo">
+        <div className="header--box">
           <button
             type="button"
-            onClick={() => navigate("/")}
-            style={{ textDecoration: "none", color: "white" }}>
-            <img src={LogoImage} alt="Newstap" />
+            tabIndex={0}
+            onClick={handleMenuIconClick}
+            className="menu--icon menu--btn"
+            aria-label="menuIcon">
+            <MenuIcon />
           </button>
-        </div>
-        <div className="util--Btn">
-          <div className="mypage--btn">
+          <div className="logo">
             <button
               type="button"
-              className="text-white"
-              onClick={() => loginout()}>
-              {authenticate ? "로그아웃" : "로그인"}
-            </button>
-            <button
-              type="button"
-              className="text-white"
-              onClick={() => navigate("/mypage")}>
-              마이페이지
+              onClick={() => navigate("/")}
+              style={{ textDecoration: "none", color: "white" }}>
+              <img src={LogoImage} alt="Newstap" />
             </button>
           </div>
-          <div className="search--btn">
-            <div
-              role="button"
-              tabIndex={0}
-              onClick={handleSearchIconClick}
-              className={`search--icon ${isSearchBoxVisible ? "hidden" : ""}`}
-              onKeyPress={e => {
-                if (e.key === "Enter") {
-                  handleSearchIconClick();
-                }
-              }}>
-              검색
-              <SearchIcon />
+          <div className="util--Btn">
+            <div className="mypage--btn">
+              <button
+                type="button"
+                className="text-white"
+                onClick={() => loginout()}>
+                {authenticate ? "로그아웃" : "로그인"}
+              </button>
+              <button
+                type="button"
+                className="text-white"
+                onClick={() => navigate("/mypage")}>
+                마이페이지
+              </button>
             </div>
-            <Form
-              className={`d-flex search--box ${
-                isSearchBoxVisible ? "" : "hidden"
-              }`}
-              onSubmit={searchByKeyword}>
-              <Form.Control
-                type="search"
-                placeholder="SEARCH"
-                className="me-2"
-                aria-label="Search"
-                value={keyword}
-                onChange={event => setKeyword(event.target.value)}
-              />
-              <Button type="submit">
+            <div className="search--btn">
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={handleSearchIconClick}
+                className={`search--icon ${isSearchBoxVisible ? "hidden" : ""}`}
+                onKeyPress={e => {
+                  if (e.key === "Enter") {
+                    handleSearchIconClick();
+                  }
+                }}>
+                검색
                 <SearchIcon />
-              </Button>
-            </Form>
+              </div>
+              <Form
+                className={`d-flex search--box ${
+                  isSearchBoxVisible ? "" : "hidden"
+                }`}
+                onSubmit={searchByKeyword}>
+                <Form.Control
+                  type="search"
+                  placeholder="SEARCH"
+                  className="me-2"
+                  aria-label="Search"
+                  value={keyword}
+                  onChange={event => setKeyword(event.target.value)}
+                />
+                <Button type="submit">
+                  <SearchIcon />
+                </Button>
+              </Form>
+            </div>
           </div>
         </div>
       </div>

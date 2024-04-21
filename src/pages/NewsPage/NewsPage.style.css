@@ -182,6 +182,7 @@ p {
   outline: none;
   background-color: inherit;
   cursor: pointer;
+  margin: 0 auto;
 }
 
 .plus-button:hover {
