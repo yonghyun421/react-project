@@ -45,7 +45,7 @@ function NewsCard({ articles }) {
       });
       dispatch(authenticateActions.updateBookmarks(newBookmarkList));
     } else {
-      console.log("No matching documents found");
+      throw new Error("No matching documents found");
     }
   };
 
