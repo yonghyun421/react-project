@@ -1,39 +1,56 @@
 /* eslint-disable */
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  id: "",
-  password: "",
-  bookmarkList: [],
-  interestList: [],
-  authenticate: false,
+const loadInitialState = () => {
+  const persistedState = localStorage.getItem("authState");
+  if (persistedState) {
+    return JSON.parse(persistedState);
+  }
+  return {
+    id: "",
+    password: "",
+    bookmarkList: [],
+    interestList: [],
+    authenticate: false,
+  };
 };
+
+const initialState = loadInitialState();
 
 const authenticateSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     login(state, action) {
-      state.id = action.payload.id;
-      state.password = action.payload.password;
-      state.bookmarkList = action.payload.bookmarkList;
-      state.interestList = action.payload.interestList;
+      const { id, bookmarkList, interestList } = action.payload;
+      state.id = id;
+      state.bookmarkList = bookmarkList;
+      state.interestList = interestList;
       state.authenticate = true;
-      localStorage.setItem("authenticate", "true");
+      // Update localStorage; excluding password
+      localStorage.setItem("authState", JSON.stringify({
+        id,
+        bookmarkList,
+        interestList,
+        authenticate: true
+      }));
     },
     logout(state) {
       state.id = "";
-      state.password = "";
       state.bookmarkList = [];
       state.interestList = [];
       state.authenticate = false;
-      localStorage.setItem("authenticate", "false");
+      localStorage.removeItem("authState");
     },
     updateInterests(state, action) {
       state.interestList = action.payload;
+      // Optionally update localStorage on changes
+      localStorage.setItem("authState", JSON.stringify({ ...state, password: "" }));
     },
     updateBookmarks(state, action) {
       state.bookmarkList = action.payload;
+      // Optionally update localStorage on changes
+      localStorage.setItem("authState", JSON.stringify({ ...state, password: "" }));
     },
   },
 });
