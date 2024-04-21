@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import LatestNewsSlide from "./components/LatestNewsSlide/LatestNewsSlide";
 import CategoryNewsSlide from "./components/CategoryNewsSlide/CategoryNewsSlide";
 import MediaCompanySlide from "./components/MediaCompanySlide/MediaCompanySlide";
@@ -8,25 +9,15 @@ import "./Homepage.style.css";
 import YoutubeBox from "./components/YoutubeBox/YoutubeBox";
 
 function Homepage() {
-  const [interest, setInterest] = useState([]);
-
-  useEffect(() => {
-    const interstArray = window.localStorage.getItem("interest");
-    if (interstArray) {
-      setInterest(JSON.parse(interstArray));
-    }
-  }, []);
-
+  const interestList = useSelector(state => state.auth.interestList);
   return (
     <div className="Homepage-area">
-      {interest && interest.length > 0 && (
+      {interestList && interestList.length > 0 && (
         <div className="favorite-area box-shadow">
           <h2 className="favorite-title Home-title">관심 분야 뉴스</h2>
           <div className="favorite-news">
-            {/* <CategoryNewsSlide category="sports" />
-            <CategoryNewsSlide category="business" /> */}
-            {interest.map((item, index) => (
-              <CategoryNewsSlide key={index} category={item} />
+            {interestList.map((item, index) => (
+              <CategoryNewsSlide key={index} category={item.value} />
             ))}
           </div>
         </div>

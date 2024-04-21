@@ -84,18 +84,10 @@ function LoginPage() {
             },
           });
         } else {
-          // 비밀번호 일치함
+          // 로그인 성공
           const userData = querySnapshot.docs[0].data();
           const bookmarkList = userData.bookmark;
-          const interestList = userData.interest;
-          // eslint-disable-next-line no-undef, prettier/prettier
-          const interestArray = interestList
-            ? interestList.map(item => item.value)
-            : [];
-          window.localStorage.setItem(
-            "interest",
-            JSON.stringify(interestArray),
-          );
+          const { interestList } = userData;
           dispatch(
             authenticateAction.login(
               userId,

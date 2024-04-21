@@ -33,8 +33,6 @@ const Header = forwardRef((props, ref) => {
   const loginout = () => {
     if (authenticate) {
       dispatch(authenticateAction.logout());
-      window.localStorage.removeItem("interest");
-      window.location.reload();
     } else {
       navigate("/login");
     }
