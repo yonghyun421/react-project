@@ -22,6 +22,7 @@
   right: 0;
 }
 .navbar-container .top-navbar {
+  justify-content: center;
   width: 100%;
   padding: 0;
   background-color: #fff;
