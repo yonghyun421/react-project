@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
+import LogoImage from "../../../assets/logo.svg";
 
 import "../LoginPage/LoginPage.style.css";
 
@@ -69,7 +70,9 @@ function JoinPage() {
   return (
     <div className="inner">
       <form className="input--box" onSubmit={handleSubmit}>
-        <div className="logo">Newstab</div>
+        <div className="logo">
+          <img src={LogoImage} alt="Newstap" />
+        </div>
         <Input
           type="text"
           value={userId}

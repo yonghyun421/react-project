@@ -8,7 +8,7 @@
   align-items: center;
   width: 400px;
   padding: 30px;
-  background-color: #fff;
+  background-color: #383E50;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -24,12 +24,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 40px;
-  margin: 20px 30px;
+  width: 170px;
+  height: 86px;
+  margin: 30px 30px 50px;
   font-size: 20px;
   font-weight: 700;
-  background-color: #ffefa2;
 }
 .input--box .input--area {
   width: 100%;
@@ -39,6 +38,7 @@
   padding: 0;
   border: 0 none;
   background: none;
+  color: #fff;
 }
 .input--box .link:hover {
   text-decoration: underline;
@@ -49,11 +49,11 @@
   width: 100%;
   margin-top: 20px;
   padding: 8px;
-  background-color: #ffd600;
+  background-color: var(--point-color);
   border: 0 none;
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--primary-color);
   border-radius: 6px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -61,5 +61,5 @@
   -o-border-radius: 6px;
 }
 .custom--button:hover {
-  background-color: #f7d10f;
+  background-color: var(--dark-point-color);
 }

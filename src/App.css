@@ -8,6 +8,7 @@
   --gray-color: #B0B0B0;
   --gradient-color: linear-gradient(180deg, #070618 0%, #383E50 100%);
   --box-shadow: 4px 10px 30px 0px rgba(7, 6, 24, 0.25);
+  --background-color: #f7f7f7;
 }
 .wrap {
   display: flex;
@@ -33,5 +34,10 @@ body {
 }
 
 .box-shadow {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: var(--box-shadow);
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
 }

@@ -4,6 +4,7 @@
 .input--area input {
   width: 100%;
   padding: 12px;
+  background-color: #fff;
   border: 1px solid #c9c9c9;
   border-radius: 6px;
   -webkit-border-radius: 6px;

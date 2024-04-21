@@ -13,7 +13,7 @@
   background-color: #fff;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: var(--box-shadow);
 }
 
 .news-list-box .news-card {
@@ -70,11 +70,11 @@ p {
   border: 1px solid #ddd;
   margin-bottom: 20px;
   border-radius: 20px;
-  box-shadow: 3px 3px 3px darkgray;
+  box-shadow: var(--box-shadow);
 }
 
 .news-list-box .article-layout:hover {
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--box-shadow);
 }
 
 .news-list-box .article-image {
@@ -129,7 +129,7 @@ p {
 }
 
 .article:hover {
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--box-shadow);
 }
 
 .article img {

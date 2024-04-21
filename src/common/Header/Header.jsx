@@ -8,6 +8,7 @@ import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu-icon.svg";
 import authenticateAction from "../../redux/acticon/authenticateAction";
 import NavigationBar from "../Navbar/Navbar";
+import LogoImage from "../../assets/logo.svg";
 
 const Header = forwardRef((props, ref) => {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const Header = forwardRef((props, ref) => {
             type="button"
             onClick={() => navigate("/")}
             style={{ textDecoration: "none", color: "white" }}>
-            NewsTab
+            <img src={LogoImage} alt="Newstap" />
           </button>
         </div>
         <div className="util--Btn">
