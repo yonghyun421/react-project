@@ -19,9 +19,18 @@ function NewsCard({ articles }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useSelector(state => state.auth.id);
+  const isAuthenticated = useSelector(state => state.auth.authenticate);
   const bookmarkList = useSelector(state => state.auth.bookmarkList);
 
   const updateBookmarks = async () => {
+    if (!isAuthenticated) {
+      // eslint-disable-next-line
+      if (window.confirm("북마크하시려면 로그인이 필요합니다.\n로그인 하시겠습니까?")) {
+        navigate("/login");
+      }
+      return;
+    }
+
     const currentBookmarkList = Array.isArray(bookmarkList) ? bookmarkList : [];
 
     const articleIndex = currentBookmarkList.findIndex(
@@ -109,9 +118,9 @@ function NewsCard({ articles }) {
 
 NewsCard.propTypes = {
   articles: PropTypes.shape({
-    url: PropTypes.string,
+    url: PropTypes.string.isRequired,
     urlToImage: PropTypes.string,
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
     description: PropTypes.string,
     author: PropTypes.string,
     isBookmarked: PropTypes.bool,
