@@ -33,12 +33,17 @@ function WeatherBox() {
         <div className="weather-box">
           {weather ? (
             <>
-              <div className="weather-date">
-                {dayjs().format("YYYY년 MM월 DD일")}
+              <div className="weather-title-area">
+                <h2 className="weather-title">{weather.name}</h2>
+                <div className="weather-date">
+                  {dayjs().format("YYYY년 MM월 DD일")}
+                </div>
               </div>
-              <h2 className="weather-title">{weather.name}</h2>
-              <div className="weather-temp">{weather.main.temp}°C</div>
-              <h5 className="weather-">{wDescEngToKor(weather.cod)}</h5>
+              <div className="weather-temp-area">
+                <div className="weather-temp">{weather.main.temp}°C</div>
+                <div className="weather-icon" />
+                <h5 className="weather-cod">{wDescEngToKor(weather.cod)}</h5>
+              </div>
               <ul className="weather-description">
                 <li>
                   습도
