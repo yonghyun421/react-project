@@ -86,7 +86,7 @@ function LoginPage() {
         } else {
           // 로그인 성공
           const userData = querySnapshot.docs[0].data();
-          const bookmarkList = userData.bookmark;
+          const { bookmarkList } = userData;
           const { interestList } = userData;
           dispatch(
             authenticateAction.login(

@@ -32,6 +32,9 @@ const authenticateSlice = createSlice({
     updateInterests(state, action) {
       state.interestList = action.payload;
     },
+    updateBookmarks(state, action) {
+      state.bookmarkList = action.payload;
+    },
   },
 });
 

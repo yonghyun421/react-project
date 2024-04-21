@@ -20,6 +20,12 @@ function updateInterests(interestList) {
   };
 }
 
-const authenticateAction = { login, logout, updateInterests };
+function updateBookmarks(bookmarkList) {
+  return dispatch => {
+    dispatch(authenticateActions.updateBookmarks(bookmarkList));
+  };
+}
+
+const authenticateAction = { login, logout, updateInterests, updateBookmarks };
 
 export default authenticateAction;
