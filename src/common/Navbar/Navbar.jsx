@@ -21,6 +21,12 @@ function NavigationBar(props) {
     } else {
       navigate("/login");
     }
+    handleMenuIconClick();
+  };
+
+  const handleMyPageButtonClick = () => {
+    handleMenuIconClick();
+    navigate("/mypage");
   };
   return (
     <div>
@@ -37,7 +43,7 @@ function NavigationBar(props) {
               <button type="button" onClick={() => loginout()}>
                 {authenticate ? "로그아웃" : "로그인"}
               </button>
-              <button type="button" onClick={() => navigate("/mypage")}>
+              <button type="button" onClick={handleMyPageButtonClick}>
                 마이페이지
               </button>
             </div>
@@ -49,7 +55,8 @@ function NavigationBar(props) {
                     to={`/news/category/${category.value}`}
                     className={({ isActive }) =>
                       `categories-list ${isActive ? "active-link" : ""}`
-                    }>
+                    }
+                    onClick={handleMenuIconClick}>
                     {category.categoryName}
                   </Nav.Link>
                 </Nav.Item>
