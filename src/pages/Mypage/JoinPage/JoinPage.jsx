@@ -53,9 +53,10 @@ function JoinPage() {
 
     try {
       await addDoc(collection(db, "USER"), {
-        bookmark: [],
         userId,
         userPassword: password,
+        bookmarkList: [],
+        interestList: [],
       });
       // eslint-disable-next-line
       alert("회원가입이 완료되었습니다!");
