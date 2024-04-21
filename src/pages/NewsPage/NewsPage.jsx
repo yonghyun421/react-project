@@ -64,27 +64,38 @@ function NewsPage() {
           {keyword ? "검색" : categoryNames[category] || category} 뉴스
         </h2>
       </div>
-      <div className="news-list-total">
-        <ul className="news-list-box">
-          {newsList &&
-            newsList.map(news => (
+      <div
+        className={`news-list-total ${
+          newsList && newsList.length > 0 ? "" : "no-results"
+        }`}>
+        {newsList && newsList.length > 0 ? (
+          <ul className="news-list-box">
+            {newsList.map(news => (
               <li key={news.id || news.url}>
-                {" "}
                 <NewsCard articles={news} />
               </li>
             ))}
-        </ul>
-      </div>
-      <div className="plus-button-box">
-        {hasNextPage && !isFetchingNextPage && (
-          <button
-            onClick={handleLoadMore}
-            className="plus-button"
-            type="button">
-            기사 더보기 <FaChevronDown />
-          </button>
+          </ul>
+        ) : (
+          <div className="no-results-message">
+            {keyword
+              ? "검색어가 없습니다."
+              : `${categoryNames[category] || category} 카테고리에 기사가 없습니다.`}
+          </div>
         )}
       </div>
+      {newsList && newsList.length > 0 && (
+        <div className="plus-button-box">
+          {hasNextPage && !isFetchingNextPage && (
+            <button
+              onClick={handleLoadMore}
+              className="plus-button"
+              type="button">
+              기사 더보기 <FaChevronDown />
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

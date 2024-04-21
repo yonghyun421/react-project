@@ -23,10 +23,9 @@ function NavigationBar(props) {
     }
     handleMenuIconClick();
   };
-
-  const handleMyPageButtonClick = () => {
-    handleMenuIconClick();
+  const handleMyPageClick = () => {
     navigate("/mypage");
+    handleMenuIconClick(); // 추가된 부분
   };
   return (
     <div>
@@ -43,7 +42,7 @@ function NavigationBar(props) {
               <button type="button" onClick={() => loginout()}>
                 {authenticate ? "로그아웃" : "로그인"}
               </button>
-              <button type="button" onClick={handleMyPageButtonClick}>
+              <button type="button" onClick={handleMyPageClick}>
                 마이페이지
               </button>
             </div>
