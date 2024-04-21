@@ -12,6 +12,7 @@ import {
 import authenticateAction from "../../../redux/acticon/authenticateAction";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
+import LogoBlackImage from "../../../assets/logo_black.svg";
 import "./LoginPage.style.css";
 
 function LoginPage() {
@@ -84,18 +85,10 @@ function LoginPage() {
             },
           });
         } else {
-          // 비밀번호 일치함
+          // 로그인 성공
           const userData = querySnapshot.docs[0].data();
-          const bookmarkList = userData.bookmark;
-          const interestList = userData.interest;
-          // eslint-disable-next-line no-undef, prettier/prettier
-          const interestArray = interestList
-            ? interestList.map(item => item.value)
-            : [];
-          window.localStorage.setItem(
-            "interest",
-            JSON.stringify(interestArray),
-          );
+          const { bookmarkList } = userData;
+          const { interestList } = userData;
           dispatch(
             authenticateAction.login(
               userId,
@@ -113,7 +106,9 @@ function LoginPage() {
   return (
     <div className="inner">
       <div className="input--box">
-        <div className="logo">Newstab</div>
+        <div className="logo">
+          <img src={LogoBlackImage} alt="Newstap" />
+        </div>
         <Input
           placeholder="아이디"
           value={userId}

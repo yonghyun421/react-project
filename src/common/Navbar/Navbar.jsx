@@ -1,58 +1,63 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.style.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NEWS_CATEGORY from "../../constants/NEWS_CATEGORY";
 import { ReactComponent as CloseIcon } from "../../assets/close-icon.svg";
+import authenticateAction from "../../redux/acticon/authenticateAction";
 
-const categories = [
-  "business",
-  "entertainment",
-  "general",
-  "health",
-  "science",
-  "sports",
-  "technology", // 여기 공백을 제거했습니다.
-];
-const categoryNames = {
-  business: "경제",
-  entertainment: "연예",
-  general: "일반",
-  health: "건강",
-  science: "과학",
-  sports: "스포츠",
-  technology: "기술",
-};
 /* eslint-disable react/prop-types */
 function NavigationBar(props) {
   const { isMenuIconVisible, handleMenuIconClick } = props;
+  const dispatch = useDispatch();
+  const authenticate = useSelector(state => state.auth.authenticate);
+  const navigate = useNavigate();
+
+  const loginout = () => {
+    if (authenticate) {
+      dispatch(authenticateAction.logout());
+    } else {
+      navigate("/login");
+    }
+    handleMenuIconClick();
+  };
+
+  const handleMyPageButtonClick = () => {
+    handleMenuIconClick();
+    navigate("/mypage");
+  };
   return (
     <div>
       <div className={`navbar-container ${isMenuIconVisible ? "open" : ""}`}>
         <button type="button" className="dim" onClick={handleMenuIconClick}>
           뒷배경
         </button>
-        <Navbar
-          collapseOnSelect
-          expand="lg"
-          bg="light"
-          variant="light"
-          className="top-navbar">
+        <Navbar collapseOnSelect expand="lg" className="top-navbar">
           <div className="close-btn">
             <CloseIcon onClick={handleMenuIconClick} />
           </div>
           <div className="category-list">
+            <div className="mypage--btn">
+              <button type="button" onClick={() => loginout()}>
+                {authenticate ? "로그아웃" : "로그인"}
+              </button>
+              <button type="button" onClick={handleMyPageButtonClick}>
+                마이페이지
+              </button>
+            </div>
             <Nav className="flex-row">
-              {/* eslint-disable react/no-array-index-key */}
-              {categories.map((category, index) => (
-                <Nav.Item key={index} className="list-contain">
+              {NEWS_CATEGORY.map(category => (
+                <Nav.Item key={category.value} className="list-contain">
                   <Nav.Link
                     as={NavLink}
-                    to={`/news/category/${category}`}
+                    to={`/news/category/${category.value}`}
                     className={({ isActive }) =>
                       `categories-list ${isActive ? "active-link" : ""}`
-                    }>
-                    {categoryNames[category]}
+                    }
+                    onClick={handleMenuIconClick}>
+                    {category.categoryName}
                   </Nav.Link>
                 </Nav.Item>
               ))}

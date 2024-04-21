@@ -1,10 +1,15 @@
 .weatherbox-area {
-  width: 100%;
-  background-color: white;
-  margin-bottom: 10px;
-  color: black;
-  border-radius: 20px;
   position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+  color: #fff;
+  background: linear-gradient(180deg, #070618 0%, #383E50 100%);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  font-family: "Pretendard", sans-serif;
 }
 
 .weateherbox-wrap {
@@ -16,17 +21,42 @@
   padding: 2rem;
 }
 
-.weather-description-title {
+.weather-title-area {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  margin-top: 40px;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
 }
-
+.weather-title-area .weather-title {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+.weather-title-area .weather-date {
+  font-size: 12px;
+  font-weight: 500;
+}
+.weather-temp-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #fff;
+}
+.weather-temp-area .weather-temp {
+  font-size: 4rem;
+  font-weight: 700;
+}
+.weather-temp-area .weather-cod {
+  width: 100%;
+  margin: 0.5rem 0 0
+}
 .weather-description {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  margin: 0;
+  padding: 1rem 1rem 0;
 }

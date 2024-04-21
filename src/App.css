@@ -1,8 +1,21 @@
+:root {
+  --primary-color: #222;
+  --secondary-color: #383E50;
+  --point-color: #FFD600;
+  --dark-point-color: #FFB800;
+  --dark-point-opacity-color: rgba(255, 184, 0, 0.20);
+  --warning-color: #F85D5D;
+  --gray-color: #B0B0B0;
+  --gradient-color: linear-gradient(180deg, #070618 0%, #383E50 100%);
+  --box-shadow: 4px 10px 30px 0px rgba(7, 6, 24, 0.25);
+  --background-color: #f7f7f7;
+}
+
 .wrap {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
 }
 
 * {
@@ -18,9 +31,19 @@ img {
 }
 
 body {
-  background-color: lightgray !important;
+  /* background-color: lightgray !important; */
 }
 
 .box-shadow {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: var(--box-shadow);
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.contain {
+  position: relative;
+  width: 100%;
 }

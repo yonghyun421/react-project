@@ -1,11 +1,19 @@
 .myPage--wrap {
-  background: #f7f7f7;
-  padding: 30px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 32px);
+  max-width: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 .myPage--wrap h2 {
@@ -21,11 +29,11 @@
 }
 
 .myPage--box {
-  max-width: 500px;
-  width: calc(100% - 32px);
-  padding: 16px 16px 24px;
+  width: 100%;
+  padding: 30px;
   background-color: #fff;
   border-radius: 14px;
+  box-shadow: var(--box-shadow);
 }
 
 .profile--wrap {
@@ -72,12 +80,11 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 14px 17px;
-  display: inline-flex;
   width: 14px;
   height: 17px;
 }
 
-.profile--info__bookmark li a {
+.profile--info__bookmark li button {
   font-size: 0.9rem;
   text-decoration: none;
   color: #222;
@@ -85,7 +92,7 @@
   gap: 0.3rem;
 }
 
-.profile--info__bookmark li a span {
+.profile--info__bookmark li button span {
   font-weight: 700;
 }
 
@@ -125,19 +132,26 @@
 .profile--btn {
   width: 100%;
   border: none;
-  background: #ffd600;
   color: #fff;
-  padding: 0.5rem 2rem;
-  border-radius: 14px;
-  font-weight: 700;
+  padding: 0.8rem 0;
+  background-color: var(--point-color);
+  border: 0 none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
 }
 
 .member_delete {
   max-width: 500px;
   width: calc(100% - 32px);
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.member_delete a {
-  color: #aaa;
+.member_delete button {
+  color: #999;
 }
