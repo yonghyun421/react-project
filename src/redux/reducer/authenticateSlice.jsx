@@ -52,6 +52,20 @@ const authenticateSlice = createSlice({
       // Optionally update localStorage on changes
       localStorage.setItem("authState", JSON.stringify({ ...state, password: "" }));
     },
+    // 기존 액션들
+    toggleBookmark(state, action) {
+      const bookmarkUrl = action.payload;
+      const index = state.bookmarkList.findIndex(bm => bm.url === bookmarkUrl);
+      if (index !== -1) {
+        // 북마크가 이미 있으면 제거
+        state.bookmarkList.splice(index, 1);
+      } else {
+        // 북마크가 없으면 추가
+        state.bookmarkList.push({ url: bookmarkUrl });
+      }
+      // LocalStorage 업데이트
+      localStorage.setItem("authState", JSON.stringify({ ...state, password: "" }));
+    },
   },
 });
 

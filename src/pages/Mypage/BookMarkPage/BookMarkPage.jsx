@@ -6,7 +6,10 @@ import "./BookMarkPage.style.css";
 function BookMarkPage() {
   const bookmarkList = useSelector(state => state.auth.bookmarkList);
 
-  const newsList = [...bookmarkList];
+  const newsList = bookmarkList.map(news => ({
+    ...news,
+    isBookmarked: true,
+  }));
 
   return (
     <div>
