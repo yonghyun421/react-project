@@ -45,7 +45,7 @@ function NewsCard({ articles }) {
       });
       dispatch(authenticateActions.updateBookmarks(newBookmarkList));
     } else {
-      console.log("No matching documents found");
+      throw new Error("No matching documents found");
     }
   };
 
@@ -65,7 +65,7 @@ function NewsCard({ articles }) {
   };
 
   return (
-    <div className="newscard-area">
+    <div className="newscard-wrap">
       <button
         type="button"
         className={`bookmark ${articles.isBookmarked ? "active" : ""}`}
@@ -73,6 +73,7 @@ function NewsCard({ articles }) {
         북마크
       </button>
       <div
+        className="newscard-area"
         onClick={newsDetailPage}
         onKeyDown={e => {
           if (e.key === "Enter" || e.key === " ") {

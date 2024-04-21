@@ -7,6 +7,7 @@ import {
   addDoc,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,7 +45,26 @@ function Mypage() {
       });
       dispatch(authenticateActions.updateInterests(newInterestList));
     } else {
-      console.log("No matching documents found");
+      throw new Error("No matching documents found");
+    }
+  };
+
+  const logoutUser = () => {
+    dispatch(authenticateActions.logout());
+    navigate("/");
+  };
+
+  const deleteUserAccount = async () => {
+    const usersRef = collection(db, "USER");
+    const q = query(usersRef, where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const userDocRef = querySnapshot.docs[0].ref;
+      await deleteDoc(userDocRef);
+      logoutUser();
+    } else {
+      throw new Error("No matching user found");
     }
   };
 
@@ -102,7 +122,7 @@ function Mypage() {
         </div>
       </div>
       <p className="member_delete">
-        <button type="button" onClick={() => navigate("/")}>
+        <button type="button" onClick={deleteUserAccount}>
           회원탈퇴
         </button>
       </p>

@@ -8,27 +8,48 @@
   justify-content: center;
 }
 
-.category-list {
-  display: flex;
-  justify-content: center;
+.navbar-container .dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 0;
 }
 
-body,
-html {
-  margin: 0;
-  font:
-    bold 14px/1.4 "Open Sans",
-    arial,
-    sans-serif;
-  background: #000;
+.navbar-container .close-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.navbar-container .top-navbar {
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-container .category-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.category-list .mypage--btn {
+  display: none;
 }
 
 .navbar-container .navbar-nav {
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
   width: 100%;
 }
 
@@ -55,17 +76,13 @@ html {
   height: 2px;
   left: 50%;
   position: absolute;
-  background: #82d8ff;
+  background: var(--primary-color);
   transition:
     width 0.3s ease 0s,
     left 0.3s ease 0s;
   width: 0;
 }
 
-.close-btn,
-.dim {
-  display: none;
-}
 
 .navbar-container .navbar-nav .nav-link:hover:after {
   width: 100%;
@@ -74,8 +91,33 @@ html {
 
 @media all and (max-width: 767px) {
   .category-list {
-    padding: 2rem;
+    flex-direction: column;
+    padding: 3rem 1rem;
   }
+
+  .category-list .mypage--btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 0 20px;
+    font-size: 0.9rem;
+  }
+
+  .category-list .mypage--btn button:first-child {
+    order: 1;
+  }
+
+  .category-list .mypage--btn button:last-child {
+    order: 3;
+  }
+
+  .category-list .mypage--btn::after {
+    content: '/';
+    order: 2;
+  }
+
 
   .navbar-container {
     display: none;
@@ -92,10 +134,15 @@ html {
 
   .navbar-container.open .flex-row {
     flex-direction: column !important;
+    gap: 0;
+    padding-top: 1.2rem;
+    border-bottom: 1px solid #eee;
   }
 
   .navbar-container .navbar-nav .nav-item {
-    padding: 5px 0;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid #eee;
+    width: 100%;
   }
 
   .navbar-container .navbar-nav .nav-link {
@@ -108,6 +155,7 @@ html {
     position: absolute;
     right: 20px;
     top: 15px;
+    cursor: pointer;
   }
 
   .navbar-container.open .top-navbar {
@@ -115,10 +163,11 @@ html {
     left: 0;
     top: 0;
     z-index: 99999;
-    width: 60%;
-    min-width: 200px;
+    width: 100%;
+    max-width: 375px;
     height: 100vh;
     align-items: flex-start;
+    border: none;
   }
 
   .navbar-container.open .dim {

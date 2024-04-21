@@ -12,6 +12,7 @@ import {
 import authenticateAction from "../../../redux/acticon/authenticateAction";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
+import LogoBlackImage from "../../../assets/logo_black.svg";
 import "./LoginPage.style.css";
 
 function LoginPage() {
@@ -105,7 +106,9 @@ function LoginPage() {
   return (
     <div className="inner">
       <div className="input--box">
-        <div className="logo">Newstab</div>
+        <div className="logo">
+          <img src={LogoBlackImage} alt="Newstap" />
+        </div>
         <Input
           placeholder="아이디"
           value={userId}
