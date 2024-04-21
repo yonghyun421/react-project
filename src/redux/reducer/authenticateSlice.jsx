@@ -29,6 +29,9 @@ const authenticateSlice = createSlice({
       state.authenticate = false;
       localStorage.setItem("authenticate", "false");
     },
+    updateInterests(state, action) {
+      state.interestList = action.payload;
+    },
   },
 });
 
