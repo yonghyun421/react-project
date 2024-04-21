@@ -12,48 +12,59 @@ function JoinPage() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userIdIsValid, setUserIdIsValid] = useState(true);
-  const [passwordIsValid, setPasswordIsValid] = useState(true);
-  const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [userIdIsValid, setUserIdIsValid] = useState(null);
+  const [passwordIsValid, setPasswordIsValid] = useState(null);
+  const [passwordsMatch, setPasswordsMatch] = useState(null);
+
+  const [userIdTouched, setUserIdTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
+  const [isCheckingUserId, setIsCheckingUserId] = useState(false);
 
   const passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,}$/;
 
   const handleUserIdChange = async event => {
     const newUserId = event.target.value;
     setUserId(newUserId);
+    if (!userIdTouched) setUserIdTouched(true);
 
-    // Firestore에서 userId 검증
+    setIsCheckingUserId(true);
     const userQuery = query(
       collection(db, "USER"),
       where("userId", "==", newUserId),
     );
     const querySnapshot = await getDocs(userQuery);
-    // 결과가 비어있다면, 유효한 ID
     setUserIdIsValid(querySnapshot.empty);
+    setIsCheckingUserId(false);
   };
 
   const handlePasswordChange = event => {
     const { value } = event.target;
     setPassword(value);
+    if (!passwordTouched) setPasswordTouched(true);
     setPasswordIsValid(passwordRegex.test(value));
   };
 
   const handleConfirmPasswordChange = event => {
     const { value } = event.target;
     setConfirmPassword(value);
+    if (!confirmPasswordTouched) setConfirmPasswordTouched(true);
     setPasswordsMatch(value === password);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // 입력 유효성 검사
-    if (!userIdIsValid || !passwordIsValid || !passwordsMatch) {
-      // eslint-disable-next-line no-console
-      console.error("입력 조건을 만족하지 않습니다.");
-      return;
+    if (
+      !userIdIsValid ||
+      !passwordIsValid ||
+      !passwordsMatch ||
+      !userId ||
+      !password ||
+      confirmPassword !== password
+    ) {
+      return; // 유효성 검사 실패
     }
-
     try {
       await addDoc(collection(db, "USER"), {
         userId,
@@ -65,8 +76,7 @@ function JoinPage() {
       alert("회원가입이 완료되었습니다!");
       navigate("/");
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error("Error adding document: ", error);
+      throw new Error("Error adding document: ", error);
     }
   };
 
@@ -81,7 +91,7 @@ function JoinPage() {
           value={userId}
           placeholder="사용할 아이디를 입력해주세요."
           onChange={handleUserIdChange}
-          invalid={!userIdIsValid}
+          invalid={userIdTouched && !isCheckingUserId && !userIdIsValid}
           invalidText="이미 사용중인 아이디입니다."
         />
         <Input
@@ -89,7 +99,7 @@ function JoinPage() {
           value={password}
           placeholder="영문소문자와 숫자 조합, 6자리 이상"
           onChange={handlePasswordChange}
-          invalid={!passwordIsValid}
+          invalid={passwordTouched && !passwordIsValid}
           invalidText="비밀번호는 영문 소문자와 숫자 조합, 6자리 이상이어야 합니다."
         />
         <Input
@@ -97,7 +107,7 @@ function JoinPage() {
           value={confirmPassword}
           placeholder="비밀번호를 다시 입력해주세요."
           onChange={handleConfirmPasswordChange}
-          invalid={!passwordsMatch}
+          invalid={confirmPasswordTouched && !passwordsMatch}
           invalidText="비밀번호가 일치하지 않습니다."
         />
         <button type="submit" className="custom--button">
