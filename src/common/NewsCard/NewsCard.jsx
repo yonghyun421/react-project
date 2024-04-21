@@ -40,11 +40,13 @@ function NewsCard({ articles }) {
       >
         <div className="overlay p-2" />
       </div>
-      <div className="article-contents">
-        <div className="article-title">{articles?.title}</div>
-        <div className="article-description">{articles?.description}</div>
-        <div className="article-author">{articles?.author}</div>
-      </div>
+      {articles && (
+        <div className="article-contents">
+          <div className="article-title">{articles.title}</div>
+          <div className="article-description">{articles.description}</div>
+          <div className="article-author">{articles.author}</div>
+        </div>
+      )}
     </div>
   );
 }

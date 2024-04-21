@@ -14,6 +14,12 @@ function logout() {
   };
 }
 
-const authenticateAction = { login, logout };
+function updateInterests(interestList) {
+  return dispatch => {
+    dispatch(authenticateActions.updateInterests(interestList));
+  };
+}
+
+const authenticateAction = { login, logout, updateInterests };
 
 export default authenticateAction;
