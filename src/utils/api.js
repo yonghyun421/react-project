@@ -14,8 +14,6 @@ api.interceptors.request.use(
   // eslint-disable-next-line
   function (error) {
     // Do something with request error
-    // eslint-disable-next-line
-    console.log("request error", error);
     return Promise.reject(error);
   },
 );
@@ -33,8 +31,6 @@ api.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    // eslint-disable-next-line
-    console.log("response error", error);
     return Promise.reject(error);
   },
 );

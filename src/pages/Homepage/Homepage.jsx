@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import LatestNewsSlide from "./components/LatestNewsSlide/LatestNewsSlide";
 import CategoryNewsSlide from "./components/CategoryNewsSlide/CategoryNewsSlide";
 import MediaCompanySlide from "./components/MediaCompanySlide/MediaCompanySlide";
@@ -8,16 +9,19 @@ import "./Homepage.style.css";
 import YoutubeBox from "./components/YoutubeBox/YoutubeBox";
 
 function Homepage() {
+  const interestList = useSelector(state => state.auth.interestList);
   return (
-    // <div>
     <div className="Homepage-area">
-      <div className="favorite-area box-shadow">
-        <h2 className="favorite-title Home-title">관심 분야 뉴스</h2>
-        <div className="favorite-news">
-          <CategoryNewsSlide category="sports" />
-          <CategoryNewsSlide category="business" />
+      {interestList && interestList.length > 0 && (
+        <div className="favorite-area box-shadow">
+          <h2 className="favorite-title Home-title">관심 분야 뉴스</h2>
+          <div className="favorite-news">
+            {interestList.map((item, index) => (
+              <CategoryNewsSlide key={index} category={item.value} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <div className="mainNews--list">
         <div className="country-area box-shadow">
           <h2 className="area-title Home-title">나라별 최신뉴스</h2>
@@ -50,7 +54,6 @@ function Homepage() {
         </div>
       </div>
     </div>
-    // </div>
   );
 }
 

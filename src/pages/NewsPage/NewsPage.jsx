@@ -2,6 +2,7 @@ import React from "react";
 import { Alert } from "react-bootstrap";
 import { FaChevronDown } from "react-icons/fa";
 import { useParams, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import NewsCard from "../../common/NewsCard/NewsCard";
 import { useNewsListQuery } from "../../hooks/useNews";
 import { useSearchNewsQuery } from "../../hooks/useSearchNews";
@@ -22,6 +23,7 @@ function NewsPage() {
   const { category } = useParams();
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get("q");
+  const bookmarkList = useSelector(state => state.auth.bookmarkList);
 
   const {
     data,
@@ -34,9 +36,16 @@ function NewsPage() {
   } = keyword
     ? useSearchNewsQuery({ keyword })
     : useNewsListQuery({ category });
-  const newsList = data && data.pages.flatMap(page => page.articles);
 
-  console.log("newslist:", newsList);
+  // 북마크 여부 추가
+  const newsList =
+    data &&
+    data.pages.flatMap(page =>
+      page.articles.map(article => ({
+        ...article,
+        isBookmarked: bookmarkList.some(bm => bm.url === article.url),
+      })),
+    );
 
   if (isLoading) return <LoadingSpinner />;
 

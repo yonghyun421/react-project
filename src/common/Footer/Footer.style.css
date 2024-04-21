@@ -7,6 +7,18 @@
 
 .footer * {
   box-sizing: border-box;
+  color: var(--gray-color)
+}
+
+.foo-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.foo-wordmark {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .foo--list {

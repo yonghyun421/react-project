@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
+import LogoImage from "../../../assets/logo.svg";
 
 import "../LoginPage/LoginPage.style.css";
 
 function JoinPage() {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -46,19 +49,23 @@ function JoinPage() {
 
     // 입력 유효성 검사
     if (!userIdIsValid || !passwordIsValid || !passwordsMatch) {
+      // eslint-disable-next-line no-console
       console.error("입력 조건을 만족하지 않습니다.");
       return;
     }
 
     try {
       await addDoc(collection(db, "USER"), {
-        bookmark: [],
         userId,
         userPassword: password,
+        bookmarkList: [],
+        interestList: [],
       });
       // eslint-disable-next-line
       alert("회원가입이 완료되었습니다!");
+      navigate("/");
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error("Error adding document: ", error);
     }
   };
@@ -66,7 +73,9 @@ function JoinPage() {
   return (
     <div className="inner">
       <form className="input--box" onSubmit={handleSubmit}>
-        <div className="logo">Newstab</div>
+        <div className="logo">
+          <img src={LogoImage} alt="Newstap" />
+        </div>
         <Input
           type="text"
           value={userId}

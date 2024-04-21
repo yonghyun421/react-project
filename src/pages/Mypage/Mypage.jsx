@@ -1,17 +1,72 @@
 import React from "react";
-// import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import { db } from "../../firebase-config";
+import { useDispatch, useSelector } from "react-redux";
+import { authenticateActions } from "../../redux/reducer/authenticateSlice";
+import { db } from "../../firebase-config";
 import "./Mypage.style.css";
 import noImage from "../../assets/noImage.jpg";
 import NEWS_CATEGORY from "../../constants/NEWS_CATEGORY";
 
 function Mypage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useSelector(state => state.auth.id);
   const bookmarkList = useSelector(state => state.auth.bookmarkList);
   const interestList = useSelector(state => state.auth.interestList);
+
+  const updateInterests = async () => {
+    const newInterestList = NEWS_CATEGORY.filter(
+      // eslint-disable-next-line
+      category => document.getElementById(category.value).checked,
+    ).map(category => ({
+      value: category.value,
+      categoryName: category.categoryName,
+    }));
+
+    const usersRef = collection(db, "USER");
+    const q = query(usersRef, where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const userDoc = querySnapshot.docs[0].ref;
+
+      await updateDoc(userDoc, {
+        interestList: newInterestList,
+      });
+      dispatch(authenticateActions.updateInterests(newInterestList));
+    } else {
+      throw new Error("No matching documents found");
+    }
+  };
+
+  const logoutUser = () => {
+    dispatch(authenticateActions.logout());
+    navigate("/");
+  };
+
+  const deleteUserAccount = async () => {
+    const usersRef = collection(db, "USER");
+    const q = query(usersRef, where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const userDocRef = querySnapshot.docs[0].ref;
+      await deleteDoc(userDocRef);
+      logoutUser();
+    } else {
+      throw new Error("No matching user found");
+    }
+  };
 
   return (
     <div className="inner myPage--wrap">
@@ -58,13 +113,16 @@ function Mypage() {
               );
             })}
           </ul>
-          <button type="button" className="profile--btn">
+          <button
+            type="button"
+            className="profile--btn"
+            onClick={updateInterests}>
             저장
           </button>
         </div>
       </div>
       <p className="member_delete">
-        <button type="button" onClick={() => navigate("/")}>
+        <button type="button" onClick={deleteUserAccount}>
           회원탈퇴
         </button>
       </p>

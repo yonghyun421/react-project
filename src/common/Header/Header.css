@@ -1,5 +1,5 @@
 .header {
-  background-color: #ffd600;
+  background-color: var(--primary-color);
   width: 100%;
   height: 50px;
   display: flex;
@@ -12,11 +12,20 @@
   z-index: 9999;
 }
 
-.header .logo a {
+.header .logo {
+  height: 100%;
+}
+.header .logo button {
+  height: 100%;
+  padding: 8px 0;
   font-size: 1.4rem;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
+}
+.header .logo img {
+  width: auto;
+  height: 100%;
 }
 
 .header .menu--btn,
@@ -42,11 +51,11 @@
   gap: 1rem;
 }
 
-.mypage--btn {
+.header .mypage--btn {
   display: flex;
   align-items: center;
   -webkit-box-align: center;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .header .util--Btn a {
@@ -83,7 +92,7 @@
 
 .search--box .form-control:focus {
   background-color: #fff;
-  border-color: #ffd600;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 0.1rem rgb(255, 234, 1);
 }
 
@@ -100,7 +109,7 @@
     display: block;
   }
 
-  .mypage--btn {
+  .header .mypage--btn {
     display: none;
   }
 }

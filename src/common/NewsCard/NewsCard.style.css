@@ -1,3 +1,18 @@
+.newscard-wrap {
+  position: relative;
+}
+.newscard-wrap .bookmark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 26px;
+  height: 30px;
+  background-image: url('../../assets/bookmark.png');
+  font-size: 0;
+}
+.newscard-wrap .bookmark.active {
+  background-image: url('../../assets/bookmark-active.png');
+}
 .newscard-area {
   display: flex;
   justify-content: center;
@@ -60,4 +75,5 @@
   color: #666;
 }
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+}
