@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
-import LogoImage from "../../../assets/logo.svg";
+import LogoBlackImage from "../../../assets/logo_black.svg";
 
 import "../LoginPage/LoginPage.style.css";
 
@@ -74,7 +74,7 @@ function JoinPage() {
     <div className="inner">
       <form className="input--box" onSubmit={handleSubmit}>
         <div className="logo">
-          <img src={LogoImage} alt="Newstap" />
+          <img src={LogoBlackImage} alt="Newstap" />
         </div>
         <Input
           type="text"

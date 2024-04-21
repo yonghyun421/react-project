@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
 }
+
 .navbar-container .dim {
   position: absolute;
   top: 0;
@@ -15,33 +16,40 @@
   bottom: 0;
   font-size: 0;
 }
+
 .navbar-container .close-btn {
   display: none;
   position: absolute;
   top: 0;
   right: 0;
 }
+
 .navbar-container .top-navbar {
   justify-content: center;
   width: 100%;
   padding: 0;
   background-color: #fff;
+  border-bottom: 1px solid #eee;
 }
+
 .navbar-container .category-list {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
+
 .category-list .mypage--btn {
   display: none;
 }
+
 .navbar-container .navbar-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 1.2rem;
   width: 100%;
 }
 
@@ -84,16 +92,32 @@
 @media all and (max-width: 767px) {
   .category-list {
     flex-direction: column;
-    padding: 2rem;
+    padding: 3rem 1rem;
   }
+
   .category-list .mypage--btn {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 1rem;
     width: 100%;
     padding: 0 0 20px;
+    font-size: 0.9rem;
   }
+
+  .category-list .mypage--btn button:first-child {
+    order: 1;
+  }
+
+  .category-list .mypage--btn button:last-child {
+    order: 3;
+  }
+
+  .category-list .mypage--btn::after {
+    content: '/';
+    order: 2;
+  }
+
 
   .navbar-container {
     display: none;
@@ -110,10 +134,15 @@
 
   .navbar-container.open .flex-row {
     flex-direction: column !important;
+    gap: 0;
+    padding-top: 1.2rem;
+    border-bottom: 1px solid #eee;
   }
 
   .navbar-container .navbar-nav .nav-item {
-    padding: 5px 0;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid #eee;
+    width: 100%;
   }
 
   .navbar-container .navbar-nav .nav-link {
@@ -126,6 +155,7 @@
     position: absolute;
     right: 20px;
     top: 15px;
+    cursor: pointer;
   }
 
   .navbar-container.open .top-navbar {
@@ -133,10 +163,11 @@
     left: 0;
     top: 0;
     z-index: 99999;
-    width: 60%;
-    min-width: 200px;
+    width: 100%;
+    max-width: 375px;
     height: 100vh;
     align-items: flex-start;
+    border: none;
   }
 
   .navbar-container.open .dim {
