@@ -38,6 +38,7 @@ input[type="password"] {
 
 .toggle-visibility {
   position: absolute;
+  top: 12px;
   right: 10px; 
   border: none; 
   background: none;

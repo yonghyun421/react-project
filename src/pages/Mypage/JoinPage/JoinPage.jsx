@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import Input from "../component/Input/Input";
@@ -7,6 +8,7 @@ import LogoImage from "../../../assets/logo.svg";
 import "../LoginPage/LoginPage.style.css";
 
 function JoinPage() {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -61,6 +63,7 @@ function JoinPage() {
       });
       // eslint-disable-next-line
       alert("회원가입이 완료되었습니다!");
+      navigate("/");
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error adding document: ", error);

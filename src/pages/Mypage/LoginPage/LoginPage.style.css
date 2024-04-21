@@ -32,6 +32,8 @@
 }
 .input--box .input--area {
   width: 100%;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 .input--box .link {
   margin-top: 12px;
